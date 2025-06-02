@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex"> <title>Owen Whelan - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        /* Font Families */
+        body {
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+            line-height: 1.6;
+            background-color: #464646; /* Dark Gray BG */
+            color: #f0f0f0;
+        }
+        h1, h2, h3, h4, h5, h6, button, a.button-style, .section-label-text,
+        .info-box .title, .nav-button .nav-button-label, .footer-buttons .button-main-label,
+        .highlights-filter-label {
+             font-family: 'Poppins', 'Atkinson Hyperlegible', sans-serif;
+             font-weight: 600;
+        }
+        .page-top-editable-text {
+            font-family: 'Poppins', 'Atkinson Hyperlegible', sans-serif;
+            text-align: center;
+            font-size: 1em; /* Adjusted from 1.1em */
+            color: var(--color-dark-gray-bg);
+            margin-bottom: 25px;
+            font-style: normal; /* Removed italic */
+            font-weight: 400; /* Normal weight */
+        }
+        p, li, span, .footer-buttons .button-sub-label, .highlights-placeholder-text, #canvas-placeholder, .pill, .clipboard-panel p, .resume-item-location-subtext {
+             font-family: 'Atkinson Hyperlegible', sans-serif;
+        }
+
+        a { color: #FFCC99; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .clipboard-panel a, #sidebar-content a, .play-game-link, .inline-text-link {
+            color: #007bff; /* Blue link color */
+            text-decoration: underline;
+        }
+        .clipboard-panel a:hover, #sidebar-content a:hover, .play-game-link:hover, .inline-text-link:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+
+        /* Button Base Styles */
+        button, a.button-style {
+            cursor: pointer; padding: 10px 18px; border-radius: 25px;
+            transition: background 0.3s ease, transform 0.1s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 1rem; line-height: 1.4;
+            border: 2px solid var(--color-emphasis-darkest);
+            white-space: normal; text-align: center; vertical-align: middle;
+            background: linear-gradient(135deg, var(--color-emphasis), var(--color-emphasis-darker));
+            color: var(--color-dark-text);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+         button .fa, button .fas, button .far, button .fal, button .fab,
+         a.button-style .fa, a.button-style .fas, a.button-style .far, a.button-style .fal, a.button-style .fab {
+             line-height: inherit;
+             font-size: 1.1em;
+         }
+        button.no-gradient, a.button-style.no-gradient {
+             background: none; color: inherit; text-shadow: none; box-shadow: none;
+             border: 2px solid var(--color-emphasis-darkest);
+        }
+        button:hover, a.button-style:hover {
+            transform: scale(1.03);
+            border-color: var(--color-emphasis-darkest);
+            background: linear-gradient(135deg, #ffd9b3, var(--color-emphasis-darker));
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        button:active, a.button-style:active {
+            transform: scale(0.98);
+            background: linear-gradient(135deg, var(--color-emphasis-darker), var(--color-emphasis));
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Soft Color Palette */
+        :root {
+            --color-emphasis: #FFCC99; --color-accent-pale: #FFFFE0; --color-light-bg: #f8f8f8;
+            --color-soft-gray-bg: #e0e0e0; --color-medium-gray-bg: #cccccc; --color-dark-gray-bg: #464646;
+            --color-darkest-bg: #181818; --color-light-text: #f0f0f0; --color-dark-text: #181818;
+            --color-emphasis-darker: #f5a673; --color-emphasis-darkest: #e88d52; /* Orange */
+            --color-overlay-brown: rgba(85, 60, 40, 0.75);
+            --highlights-section-height: 450px;
+            --highlights-controls-height: 70px;
+            --item-shelf-height: 90px;
+            --clipboard-height: 250px;
+            --resume-pdf-embed-height: 300px;
+            --section-label-height: 50px;
+        }
+
+        /* Structure Wrappers */
+        .main-wrapper { display: block; }
+
+        /* Header Styles */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 30px;
+            background-color: var(--color-darkest-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky; top: 0; width: 100%; z-index: 1000;
+            min-height: 70px;
+        }
+        .header-left { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden; flex-shrink: 1; min-width: 0; }
+        .logo-container { width: 280px; height: 90px; flex-shrink: 0; }
+        .logo-container img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center center; }
+        .header-nav-buttons { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;}
+
+        .nav-button {
+            width: auto; min-width: 60px; height: 55px;
+            padding: 5px 8px;
+            border-radius: 10px; gap: 2px;
+            background: linear-gradient(135deg, var(--color-light-bg), var(--color-soft-gray-bg));
+            border: 2px solid var(--color-medium-gray-bg);
+            cursor: pointer;
+            transition: background 0.3s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            color: var(--color-dark-text);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .nav-button i { font-size: 1.2rem; line-height: 1; color: #000000; margin-bottom: 1px; }
+        .nav-button .nav-button-label { font-size: 0.65rem; line-height: 1.1; font-weight: 600; color: var(--color-dark-text); }
+        .nav-button:hover {
+             background: linear-gradient(135deg, #ffffff, var(--color-soft-gray-bg));
+             border-color: var(--color-dark-gray-bg);
+             transform: scale(1.04);
+             box-shadow: 0 4px 9px rgba(0,0,0,0.25);
+        }
+        .nav-button:active {
+            transform: scale(0.97);
+            background: linear-gradient(135deg, var(--color-soft-gray-bg), var(--color-light-bg));
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .contact-menu { margin-left: auto; flex-shrink: 0; }
+        #contact-menu-button { padding: 10px 20px; font-size: 1rem; border-radius: 30px; }
+        #contact-menu-button span { display: inline-block; transition: opacity 0.2s, max-width 0.3s ease-out, visibility 0.3s; max-width: 100px; overflow: hidden; white-space: nowrap; vertical-align: middle; opacity: 1; visibility: visible;}
+        #contact-menu-button i { vertical-align: middle; }
+
+
+        .callout-background-wrapper {
+            padding: 30px 40px; margin: 0;
+            background-color: var(--color-dark-gray-bg);
+            background-image: repeating-linear-gradient( 45deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08) 10px, transparent 10px, transparent 20px );
+        }
+        .callout {
+            color: var(--color-dark-text); padding: 18px 40px; margin: 0;
+            border-radius: 5px; text-align: center; font-weight: 500;
+            background-color: var(--color-soft-gray-bg); background-image: none;
+            position: relative; z-index: 1; box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        main { /* No styles needed */ }
+
+        .content-section {
+             display: flex;
+             flex-direction: column;
+             margin-bottom: 0;
+             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #resume-section { background-color: var(--color-soft-gray-bg); }
+        #highlights-section { background-color: var(--color-light-bg); }
+
+
+        .section-label-container {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0 0 0 0;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .section-label-text {
+            display: inline-block;
+            padding: 8px 35px 8px 150px;
+            font-weight: 700;
+            font-size: 1.6em;
+            color: var(--color-dark-text);
+            background: linear-gradient(135deg, var(--color-emphasis), var(--color-emphasis-darker));
+            text-transform: none;
+            letter-spacing: normal;
+            text-align: left;
+            line-height: 1.3;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-top-right-radius: var(--section-label-height);
+            border-bottom-right-radius: var(--section-label-height);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            height: var(--section-label-height);
+            display: flex;
+            align-items: center;
+            margin-left: 0;
+        }
+        .section-label-container.full-width-label {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .section-label-container.full-width-label .section-label-text {
+             border-top-left-radius: 0;
+             border-bottom-left-radius: 0;
+        }
+
+        .section-content {
+            flex-grow: 1; padding: 40px; min-width: 300px;
+            padding-top: 20px;
+            position: relative;
+        }
+        #resume-section .section-content { }
+        #highlights-section .section-content { }
+
+        .content-section > h2.section-label {
+            display: none !important;
+        }
+
+
+        #resume-section { min-height: auto; }
+        #resume-section .section-content {
+            display: flex; flex-direction: row;
+            align-items: center; justify-content: space-around; gap: 30px; flex-wrap: wrap;
+            min-height: calc(var(--resume-pdf-embed-height) + 80px);
+        }
+        .resume-left-column {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 15px; flex-basis: 60%; min-width: 300px;
+        }
+        .pdf-embed-placeholder {
+            background-color: var(--color-medium-gray-bg); border-radius: 8px;
+            width: 100%; height: var(--resume-pdf-embed-height);
+            display: flex; justify-content: center; align-items: center; overflow: hidden; padding: 0;
+        }
+        .pdf-embed-placeholder iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        .resume-section-buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            flex-basis: 35%; min-width: 280px;
+        }
+        .resume-section-buttons-container button,
+        .resume-section-buttons-container a.button-style {
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
+        }
+
+        .marquee-container {
+            position: relative; width: 100%; background-color: var(--color-darkest-bg);
+            color: var(--color-light-text); padding: 8px 0;
+            overflow: hidden; white-space: nowrap; margin: 0;
+            border-top: 1px solid #000; border-bottom: 1px solid #000; cursor: pointer;
+        }
+        .marquee-content { display: flex; width: fit-content; animation: scroll-left 40s linear infinite; }
+        .marquee-content span {
+            display: inline-block; margin: 0 20px;
+            font-size: 1em;
+            font-weight: 500; flex-shrink: 0; font-family: 'Atkinson Hyperlegible', sans-serif;
+        }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-container::before { content: 'Click for more on my skills'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-overlay-brown); color: var(--color-light-text); display: flex; justify-content: center; align-items: center; font-size: 1.1em; font-weight: bold; text-align: center; opacity: 0; transition: opacity 0.3s ease; z-index: 5; pointer-events: none; font-family: 'Poppins', sans-serif; }
+        .marquee-container:hover::before { opacity: 1; }
+        .marquee-container:hover .marquee-content { animation-play-state: paused; }
+
+        #highlights-section .section-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .highlights-column-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .highlights-controls-wrapper {
+            height: var(--highlights-controls-height); /* Fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .highlights-placeholder-text {
+            color: var(--color-dark-text);
+            text-align: left; padding-left: 5px; font-style: italic;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .highlights-filter-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .highlights-filter-label {
+            font-size: 1rem;
+            color: var(--color-dark-text);
+            font-weight: 600;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+        .highlights-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+        .filter-btn {
+            padding: 6px 15px; border-radius: 20px; font-size: 0.9rem;
+            background: var(--color-medium-gray-bg); color: var(--color-dark-text);
+            border: 1px solid var(--color-dark-gray-bg); text-shadow: none;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+        }
+        .filter-btn:hover {
+            background: var(--color-dark-gray-bg); color: var(--color-light-text);
+            transform: scale(1.03);
+        }
+        .filter-btn.active {
+            background: var(--color-emphasis-darkest); color: var(--color-light-text);
+            border-color: var(--color-emphasis-darkest); font-weight: 700;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .item-shelf-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+            width: 100%;
+            position: relative;
+            height: var(--item-shelf-height);
+        }
+
+        .shelf-arrow {
+            background-color: var(--color-medium-gray-bg);
+            color: var(--color-dark-text);
+            border: 1px solid var(--color-dark-gray-bg);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.2rem;
+            line-height: 1;
+            padding: 0;
+            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+        }
+        .shelf-arrow:hover {
+            background-color: var(--color-dark-gray-bg);
+            color: var(--color-light-text);
+            transform: scale(1.1);
+        }
+        .shelf-arrow:active { transform: scale(0.95); }
+        .shelf-arrow.hidden { opacity: 0.3; cursor: default; pointer-events: none; }
+
+        #item-shelf {
+            display: flex; flex-direction: row; gap: 12px; padding: 10px;
+            background-color: var(--color-soft-gray-bg); border-radius: 10px;
+            border: 1px solid var(--color-medium-gray-bg);
+            align-items: center; overflow-x: hidden;
+            width: 600px;
+            max-width: calc(100% - 80px);
+            margin: 0 10px;
+            height: var(--item-shelf-height); min-height: var(--item-shelf-height);
+            scroll-behavior: smooth;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        #item-shelf::-webkit-scrollbar { display: none; }
+        #item-shelf .info-box.hidden { display: none; }
+
+        #content-canvas {
+            height: var(--highlights-section-height);
+            min-height: var(--highlights-section-height);
+            max-height: var(--highlights-section-height);
+            border: 3px dashed var(--color-dark-gray-bg);
+            border-radius: 15px; background-color: #ffffff;
+            transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        #canvas-placeholder {
+            font-size: 1.2em; color: #777; font-weight: 500;
+            padding: 20px; transition: opacity 0.3s ease, color 0.3s ease;
+            pointer-events: none; text-align: center;
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 40px); display: block;
+        }
+        #content-canvas.over #canvas-placeholder { color: #e8a87c; font-weight: 600; }
+        #canvas-content-area {
+            flex-grow: 1; padding: 25px 35px; box-sizing: border-box;
+            overflow-y: auto; word-wrap: break-word; overflow-wrap: break-word;
+            text-align: left; display: none; animation: fadeIn 0.5s ease-out forwards;
+            background-color: transparent; color: var(--color-dark-text); position: relative;
+        }
+        .canvas-pills-container {
+            padding: 10px 20px; background-color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid var(--color-medium-gray-bg);
+            display: flex; flex-wrap: wrap; gap: 8px;
+            justify-content: center; align-items: center;
+            flex-shrink: 0; display: none;
+        }
+        .pill {
+            background-color: var(--color-soft-gray-bg); color: var(--color-dark-text);
+            padding: 5px 12px; border-radius: 15px; font-size: 0.85em;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #canvas-content-area h2 { margin-top: 0; color: var(--color-dark-text); border-bottom: 2px solid var(--color-medium-gray-bg); padding-bottom: 5px; margin-bottom: 15px; }
+        #canvas-content-area p { line-height: 1.6; margin-bottom: 12px; }
+        #canvas-content-area ul { list-style: disc; margin-left: 20px; padding-left: 10px; }
+        #canvas-content-area li { margin-bottom: 8px; }
+        #canvas-content-area .button-style { margin-top: 10px; }
+
+        .info-box { padding: 8px; border: 1px solid var(--color-medium-gray-bg); border-radius: 8px; background: #ffffff; color: var(--color-dark-text); transition: all 0.25s ease-in-out; width: 75px; height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.08); user-select: none; cursor: grab; flex-shrink: 0; }
+        .info-box:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.12); border-color: var(--color-emphasis); z-index: 10; cursor: pointer; }
+        .info-box .icon { font-size: 1.4em; margin-bottom: 3px; line-height: 1; pointer-events: none; }
+        .info-box .title { font-size: 0.65em; pointer-events: none; line-height: 1.1; }
+        .info-box:active { cursor: grabbing; background: #f8f8f8; transform: scale(0.98); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .info-box.dragging { opacity: 0.4; transform: rotate(-3deg) scale(0.95); }
+        #content-canvas.over { border-style: solid; border-color: var(--color-emphasis); background-color: #fffaf0; box-shadow: inset 0 0 15px rgba(255, 204, 153, 0.4); }
+
+
+        .hidden-content-source, .hidden-info { display: none; }
+
+        footer#page-footer {
+            color: var(--color-light-text); padding: 40px 40px; text-align: center;
+            background-color: var(--color-darkest-bg);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+            border-top: 1px solid #000;
+        }
+        .footer-content { max-width: 800px; margin: 0 auto; text-align: left; margin-bottom: 30px; }
+        .footer-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .footer-buttons a.button-style {
+            padding: 10px 22px; font-size: 1rem; width: 280px; min-width: 280px;
+            flex-direction: column; text-align: center; line-height: 1.3; gap: 2px;
+            color: var(--color-dark-text);
+        }
+        .footer-buttons .button-sub-label { font-size: 0.8em; font-style: italic; color: #553c20; font-weight: 400; }
+        .footer-placeholder-text { font-size: 0.9em; color: var(--color-medium-gray-bg); margin-top: 15px; }
+
+        .subpage { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-light-bg); color: var(--color-dark-text); z-index: 100; display: none; padding: 40px; overflow-y: auto; }
+        .subpage .back-button {
+            position: absolute; top: 25px; left: 30px;
+            background-color: var(--color-medium-gray-bg); color: var(--color-dark-text);
+            padding: 8px 18px; font-size: 1rem; border-radius: 20px;
+            border: 2px solid var(--color-emphasis-darkest);
+            text-shadow: none; box-shadow: none;
+        }
+         .subpage .back-button:hover {
+            background-color: var(--color-emphasis-darker);
+            border-color: var(--color-emphasis-darkest);
+            color: var(--color-light-text);
+            transform: scale(1.03);
+        }
+         .subpage .back-button:active { transform: scale(0.98); }
+         .subpage h1.page-main-title { text-align: center; margin-top: 60px; margin-bottom: 15px; color: var(--color-darkest-bg); }
+         /* .page-top-editable-text already styled globally */
+         .subpage .content { max-width: 800px; margin: 20px auto; }
+         .subpage .content h2 { color: var(--color-darkest-bg); margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid var(--color-medium-gray-bg); padding-bottom: 5px;}
+         .subpage .content h2 i { /* Icon styling for Skills page H2 */
+            margin-right: 12px;
+            color: var(--color-emphasis-darkest);
+            font-size: 0.9em;
+         }
+         .subpage .content h3 {
+            font-size: 1.15em; color: var(--color-dark-gray-bg);
+            margin-top: 20px; margin-bottom: 5px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+         }
+         .subpage .content p { margin-bottom: 15px; margin-left: 0px; }
+         .subpage .content ul { list-style: disc; margin-left: 25px; padding-left: 10px; margin-bottom: 15px; }
+         .subpage .content ul ul { margin-top: 5px; margin-bottom: 5px; margin-left: 20px;} /* Sub-bullet styling */
+         .subpage .content li { margin-bottom: 5px; }
+         #skills-page ul { list-style: square; margin-left: 40px; }
+         #skills-page li { margin-bottom: 10px; font-size: 1.1em;}
+
+        .item-info-btn {
+             padding: 1px 5px; font-size: 0.8em; line-height: 1;
+             border: 1px solid var(--color-medium-gray-bg);
+             border-radius: 50%; width: 22px; height: 22px;
+             background-color: var(--color-soft-gray-bg); color: var(--color-dark-text);
+             cursor: pointer; margin-left: 10px; flex-shrink: 0;
+             transition: background-color 0.2s ease, border-color 0.2s ease;
+             text-shadow: none; box-shadow: none;
+             display: inline-flex; justify-content: center; align-items: center;
+        }
+        .item-info-btn i { font-size: 0.9em; color: var(--color-dark-text); }
+         .item-info-btn:hover {
+             background-color: var(--color-medium-gray-bg);
+             border-color: var(--color-dark-gray-bg);
+         }
+        .personal-story-box {
+            background-color: var(--color-soft-gray-bg);
+            border-left: 5px solid var(--color-emphasis-darkest);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+        .personal-story-box p { margin-left: 0; }
+
+
+        #about-page, #skills-page, #projects-page, #extras-page, #resume-web-page { display: none; }
+
+        #info-sidebar { position: fixed; top: 0; right: -350px; width: 320px; height: 100%; background-color: var(--color-light-bg); color: var(--color-dark-text); box-shadow: -3px 0 10px rgba(0,0,0,0.2); z-index: 1500; transition: right 0.4s ease-in-out; padding: 20px; padding-top: 60px; overflow-y: auto; }
+         #info-sidebar.active { right: 0; }
+         #close-sidebar-btn { position: absolute; top: 15px; right: 15px; font-size: 1.8em; font-weight: bold; line-height: 1; background: none; border: none; color: var(--color-dark-gray-bg); cursor: pointer; padding: 5px; }
+         #close-sidebar-btn:hover { color: #000; }
+         #sidebar-content { line-height: 1.5; }
+         #sidebar-content h4 { margin-top: 0; margin-bottom: 15px; color: var(--color-darkest-bg); border-bottom: 1px solid var(--color-medium-gray-bg); padding-bottom: 5px; }
+         #sidebar-content p { margin-bottom: 10px; font-size: 0.95em; }
+         #sidebar-content ul { list-style: disc; margin-left: 20px; margin-bottom: 10px; font-size: 0.95em; }
+         #sidebar-content li { margin-bottom: 5px; }
+
+         .gallery-page .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+         .gallery-page .gallery-item {
+            border: 1px solid var(--color-medium-gray-bg); border-radius: 8px;
+            padding: 15px; background-color: #fff; text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative;
+         }
+         /* Styles for Project & Extras Icons */
+         .gallery-page .gallery-item .project-icon-container {
+            width: 100px; /* Default size for Projects page */
+            height: 100px; /* Default size for Projects page */
+            background-color: var(--color-soft-gray-bg);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px auto;
+            color: var(--color-emphasis-darkest);
+        }
+        .gallery-page .gallery-item .project-icon-container i {
+            font-size: 3em; /* Default icon size for Projects page */
+        }
+        /* Smaller icons specifically for Extras page */
+        #extras-page .gallery-item .project-icon-container {
+            width: 80px; /* Smaller container for Extras */
+            height: 80px; /* Smaller container for Extras */
+        }
+        #extras-page .gallery-item .project-icon-container i {
+            font-size: 2.2em; /* Smaller icon for Extras */
+        }
+
+         .gallery-page .gallery-item h4 { font-size: 1.1em; margin-bottom: 8px; color: var(--color-darkest-bg); }
+         .gallery-page .gallery-item p.item-short-desc { font-size: 0.9em; color: var(--color-dark-gray-bg); margin-left: 0; flex-grow: 1; margin-bottom: 10px; }
+         .gallery-page .gallery-item .item-info-btn {
+            position: absolute; top: 10px; right: 10px;
+            background-color: rgba(255,255,255,0.7);
+         }
+         .gallery-page .gallery-item .item-info-btn:hover { background-color: rgba(230,230,230,0.9); }
+
+        .clipboard-panel {
+            position: fixed;
+            bottom: calc(-1 * var(--clipboard-height) - 40px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            height: var(--clipboard-height);
+            background-color: var(--color-accent-pale);
+            color: var(--color-dark-text);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+            z-index: 1600;
+            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            padding: 20px;
+            padding-bottom: 40px;
+            overflow-y: auto;
+        }
+        .clipboard-panel.visible { bottom: 0; }
+        .clipboard-panel h4 { margin-top: 0; margin-bottom: 10px; border-bottom: 1px solid var(--color-dark-gray-bg); padding-bottom: 5px;}
+        .clipboard-panel p { font-size: 0.95em; line-height: 1.5; }
+        .clipboard-panel ul { list-style-position: inside; padding-left: 0; } /* For lists in clipboard */
+        .clipboard-panel li { margin-bottom: 5px; }
+        .clipboard-panel .close-clipboard-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            background: var(--color-emphasis); color: var(--color-dark-text);
+            border: 1px solid var(--color-emphasis-darker);
+            border-radius: 50%; width: 30px; height: 30px;
+            font-size: 1.2em; line-height: 1;
+            cursor: pointer; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .clipboard-panel .close-clipboard-btn:hover { background: var(--color-emphasis-darker); }
+
+        .resume-contact-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 10px;
+            background-color: var(--color-soft-gray-bg);
+            border-radius: 5px;
+        }
+        .resume-contact-header p {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .resume-contact-header p i {
+            color: var(--color-emphasis-darkest);
+            font-size: 1.2em;
+        }
+        .resume-contact-header a {
+            color: var(--color-dark-text);
+            text-decoration: underline;
+        }
+        .resume-contact-header a:hover { color: var(--color-emphasis-darkest); }
+
+        .resume-item h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+            margin-bottom: 3px;
+        }
+        .resume-item h3 .item-title-text {
+            flex-grow: 1;
+        }
+        .resume-item .item-info-btn {
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        .resume-item-location-subtext {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .resume-item p:not(.resume-item-location-subtext) {
+            margin-left: 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .section-label-container {
+                padding: 0px 20px;
+                margin-top: 15px;
+            }
+            .section-label-text {
+                font-size: 1.4em;
+                padding: 6px 30px 6px 20px;
+                height: calc(var(--section-label-height) - 10px);
+                border-top-right-radius: calc((var(--section-label-height) - 10px) / 2);
+                border-bottom-right-radius: calc((var(--section-label-height) - 10px) / 2);
+            }
+            .section-label-container.full-width-label .section-label-text {
+                 padding-left: 20px;
+            }
+
+
+            .highlights-controls-wrapper {height: auto; min-height: 0;}
+            #content-canvas {
+                 min-height: 350px;
+                 height: auto;
+                 max-height: none;
+             }
+        }
+
+
+        @media (max-width: 768px) {
+            header { padding: 10px 15px; }
+            .logo-container { width: 200px; height: 70px; }
+            .header-nav-buttons { gap: 5px; }
+            .nav-button { min-width: 60px; height: 50px; padding: 4px 6px; border-radius: 10px;}
+            .nav-button i { font-size: 1.1rem; }
+            .nav-button .nav-button-label { font-size: 0.6rem; }
+
+            .callout-background-wrapper { padding: 15px; }
+            .callout { padding: 12px 15px; font-size: 0.95em;}
+
+            .section-content { padding: 20px; }
+            .section-label-container:not(.full-width-label) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .section-label-container.full-width-label .section-label-text {
+                 padding-left: 20px;
+            }
+
+
+            .footer-buttons a.button-style { width: 90%; min-width: 200px; }
+             #resume-section .section-content { flex-direction: column; align-items: center; }
+             .resume-left-column { flex-basis: 100%; max-width: 400px; align-items: center;}
+             .resume-section-buttons-container { align-items: center; width: 100%; max-width: 300px;}
+
+            .item-shelf-wrapper { margin-top: 10px; }
+            #item-shelf {
+                height: var(--item-shelf-height);
+                min-height: var(--item-shelf-height);
+            }
+            .clipboard-panel { width: 95%; }
+        }
+
+         @media (max-width: 780px) {
+            #contact-menu-button span {
+                max-width: 0;
+                opacity: 0;
+                visibility: hidden;
+                margin-left: -5px;
+            }
+            #contact-menu-button {
+                padding: 8px 10px;
+                width: 45px;
+                height: 45px;
+            }
+            .header-left { gap: 5px; }
+            .nav-button { min-width: 55px; }
+        }
+
+
+        @media (max-width: 650px) { /* Header stacking */
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                height: auto;
+            }
+            .header-left {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 10px;
+                overflow: visible;
+            }
+            .logo-container { width: 200px; height: auto; margin-bottom: 10px;}
+            .header-nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+            .contact-menu {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+            #contact-menu-button {
+                width: auto;
+                max-width: 250px;
+                padding: 10px 20px;
+            }
+            #contact-menu-button span {
+                display: inline-block;
+                max-width: none;
+                opacity: 1;
+                visibility: visible;
+                margin-left: 0;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            .logo-container { display: none; }
+            .header-left { margin-bottom: 5px;}
+            .nav-button { min-width: 55px; height: 48px; }
+            .nav-button i { font-size: 1rem; }
+            .nav-button .nav-button-label { font-size: 0.55rem; }
+
+
+            .resume-contact-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .resume-item h3 { font-size: 1.1em; }
+            .resume-item-location-subtext { font-size: 0.85em; }
+            .shelf-arrow { width: 30px; height: 30px; font-size: 1rem; }
+            #item-shelf { padding: 10px 5px; }
+            .section-label-container { padding: 0 15px; }
+            .section-label-container.full-width-label .section-label-text {
+                 padding-left: 10px;
+            }
+            .section-label-text { font-size: 1.2em; padding: 4px 20px 4px 10px; height: calc(var(--section-label-height) - 20px); }
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <header>
+            <div class="header-left">
+                <div class="logo-container"><img src="images/logo.png" alt="Owen Whelan Logo"></div>
+                <div class="header-nav-buttons">
+                     <button class="nav-button" id="nav-about" title="About Me">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                        <span class="nav-button-label">About</span>
+                     </button>
+                     <button class="nav-button" id="nav-skills" title="Skills">
+                         <i class="fa-solid fa-atom"></i>
+                         <span class="nav-button-label">Skills</span>
+                     </button>
+                     <button class="nav-button" id="nav-projects" title="Projects">
+                         <i class="fa-solid fa-rocket"></i>
+                         <span class="nav-button-label">Projects</span>
+                     </button>
+                     <button class="nav-button" id="nav-extras" title="Extras">
+                         <i class="fa-solid fa-photo-film"></i>
+                         <span class="nav-button-label">Extras</span>
+                     </button>
+                     <button class="nav-button" id="nav-resume-web" title="Résumé (Web)">
+                         <i class="fa-solid fa-file-lines"></i>
+                         <span class="nav-button-label">Résumé</span>
+                     </button>
+                </div>
+            </div>
+            <div class="contact-menu">
+                <button id="contact-menu-button">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Get in Touch</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="callout-background-wrapper">
+            <div class="callout">From New York, I’m participating in the communities I find myself in by utilizing my dedicated interests and advanced skills in technology, language, and the world.</div>
+        </div>
+
+        <main>
+            <section id="resume-section" class="content-section">
+                 <h2 class="section-label" style="display:none !important;">Résumé</h2>
+                 <div class="section-label-container full-width-label">
+                    <div class="section-label-text">Résumé</div>
+                 </div>
+                 <div class="section-content">
+                   <div class="resume-left-column">
+                       <div class="pdf-embed-placeholder">
+                           <iframe src="OwenWhelan_Resume.pdf" title="Embedded Résumé PDF" type="application/pdf">
+                               Your browser does not support embedded PDFs. You can
+                               <a href="OwenWhelan_Resume.pdf">download it here</a>.
+                           </iframe>
+                       </div>
+                   </div>
+                   <div class="resume-section-buttons-container">
+                        <button id="view-full-pdf-main"><i class="fa-solid fa-file-pdf"></i> View Full PDF</button>
+                        <button id="view-resume-web-main"><i class="fa-solid fa-file-lines"></i> View Web Résumé</button>
+                   </div>
+                 </div>
+            </section>
+
+
+            <div class="marquee-container" id="skills-marquee">
+                 <div class="marquee-content">
+                    <span>AI in Education</span><span>Spanish</span><span>Teaching</span><span>Research</span><span>Writing</span><span>Leadership</span><span>Instructional Technology</span><span>Curriculum Design</span><span>Template Building</span><span>Collaboration</span><span>Video Creation</span>
+                    <span>AI in Education</span><span>Spanish</span><span>Teaching</span><span>Research</span><span>Writing</span><span>Leadership</span><span>Instructional Technology</span><span>Curriculum Design</span><span>Template Building</span><span>Collaboration</span><span>Video Creation</span>
+                 </div>
+            </div>
+
+            <section id="highlights-section" class="content-section">
+                 <h2 class="section-label" style="display:none !important;">Highlights</h2>
+                 <div class="section-label-container full-width-label">
+                    <div class="section-label-text">Highlights</div>
+                 </div>
+                 <div class="section-content">
+                     <div class="highlights-column-container">
+                        <div class="highlights-controls-wrapper">
+                            <p class="highlights-placeholder-text">Click an item below or drag it onto the canvas to view project details, articles, or skill summaries.</p>
+                            <div class="highlights-filter-area">
+                                 <span class="highlights-filter-label">Filter:</span>
+                                 <div class="highlights-filters">
+                                     <button class="filter-btn active" data-category="all">All</button>
+                                     <button class="filter-btn" data-category="ai-research">AI & Research</button>
+                                     <button class="filter-btn" data-category="teaching-mentorship">Teaching & Mentorship</button>
+                                     <button class="filter-btn" data-category="leadership-communication">Leadership & Communication</button>
+                                 </div>
+                            </div>
+                        </div>
+                         <div class="item-shelf-wrapper">
+                            <button class="shelf-arrow prev-arrow" id="shelf-prev-arrow" aria-label="Previous items"><i class="fas fa-chevron-left"></i></button>
+                            <div id="item-shelf">
+                             <div class="info-box" draggable="true" id="box-instructional-tech-intern" data-content-id="content-instructional-tech-intern" data-category="ai-research teaching-mentorship" title="Instructional Technology Intern"><span class="icon">💡</span><span class="title">IT Intern</span></div>
+                             <div class="info-box" draggable="true" id="box-ai-research-combo" data-content-id="content-ai-research-combo" data-category="ai-research" title="AI Research (INTED/CURSCA)"><span class="icon">🔬</span><span class="title">AI Research</span></div>
+                             <div class="info-box" draggable="true" id="box-marist-ai-group" data-content-id="content-marist-ai-group" data-category="ai-research leadership-communication" title="Marist+AI Group"><span class="icon">👥</span><span class="title">Marist+AI</span></div>
+                             <div class="info-box" draggable="true" id="box-boces-ta" data-content-id="content-boces-ta" data-category="teaching-mentorship" title="BOCES TA"><span class="icon">🏫</span><span class="title">BOCES TA</span></div>
+                             <div class="info-box" draggable="true" id="box-freelance-tutoring" data-content-id="content-freelance-tutoring" data-category="teaching-mentorship" title="Freelance Tutoring"><span class="icon">🧑‍🏫</span><span class="title">Tutoring</span></div>
+                             <div class="info-box" draggable="true" id="box-aloud-game" data-content-id="content-aloud-game" data-category="teaching-mentorship ai-research" title="ALOUD Language Game"><span class="icon">🎮</span><span class="title">ALOUD Game</span></div>
+                             <div class="info-box" draggable="true" id="box-marist-circle" data-content-id="content-marist-circle" data-category="leadership-communication" title="Marist Circle (Editor/Writer)"><span class="icon">📰</span><span class="title">Marist Circle</span></div>
+                             <div class="info-box" draggable="true" id="box-games-society" data-content-id="content-games-society" data-category="leadership-communication" title="Games Society Leadership"><span class="icon">🎲</span><span class="title">Games Society</span></div>
+                            </div>
+                            <button class="shelf-arrow next-arrow" id="shelf-next-arrow" aria-label="Next items"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                         <div id="content-canvas">
+                             <div id="canvas-placeholder">Drag or Click an item to learn more!</div>
+                             <div id="canvas-content-area"></div>
+                             <div class="canvas-pills-container"></div>
+                             </div>
+                     </div>
+                 </div>
+            </section>
+        </main>
+
+        <footer id="page-footer">
+            <div class="footer-content">
+                <p>Thank you for visiting my portfolio. Here you can find links to connect with me or inquire further about my work and experience.</p>
+                <p>I am passionate about the intersection of technology, education, and effective communication. Feel free to reach out!</p>
+            </div>
+            <div class="footer-buttons">
+                 <a href="https://www.linkedin.com/in/owen-whelan-605966296/" target="_blank" rel="noopener noreferrer" class="button-style" id="footer-linkedin">
+                     <span class="button-main-label">LinkedIn</span>
+                     <span class="button-sub-label">Professional network & updates</span>
+                 </a>
+                 <a href="mailto:owen.whelan1@marist.edu" class="button-style" id="footer-academic-email">
+                      <span class="button-main-label">Academic Email</span>
+                      <span class="button-sub-label">University-related inquiries</span>
+                 </a>
+                 <a href="mailto:owenw2023@gmail.com" class="button-style" id="footer-personal-email">
+                       <span class="button-main-label">Personal Email</span>
+                       <span class="button-sub-label">General comments or information</span>
+                 </a>
+            </div>
+            <p class="footer-placeholder-text" id="last-updated">Last updated: placeholder</p>
+        </footer>
+    </div>
+
+    <div id="about-page" class="subpage">
+        <button class="back-button" id="about-back-button">&larr; Back</button>
+        <h1 class="page-main-title">About Me</h1>
+        <div class="content">
+            <div class="personal-story-box">
+                <p>ABOUT ME PLACEHOLDER</p>
+            </div>
+            <h3>My Name & Origin</h3>
+            <p>My name is Owen Whelan (he/him/él). I come from Rockland County, New York.</p>
+            <h3>My Values</h3>
+            <p><strong>Technology:</strong> I find technology to be an important and constant thing in my life. As someone from Gen Z, I’ve seen it evolve rapidly. I am excited to learn about new technologies and believe strongly in studying them, learning more about them, and experimenting with them.</p>
+            <p><strong>Education:</strong> I believe that education is a lifelong journey that extends far beyond the classroom model. It's not just about memorizing facts, but about developing critical thinking skills and expanding one's worldview. Learning should be engaging and meaningful, connecting theoretical knowledge with practical applications. I value both formal education and self-directed learning, as they each offer unique perspectives and opportunities for growth.</p>
+            <p><strong>Language:</strong> I’m studying Spanish because I really like it, but I also believe strongly in language. Learning another language can take several forms, like Spanish, artwork, or coding, and I think that all of them change the way you think and make you a better person. I believe strongly in the power of the written, spoken, and artistic word and am excited to see it thrive in future years.</p>
+            <h3>Fun & Games</h3>
+            <p>In my free time, I draw, play games, and write (check out Journalism). I’m active on Instagram and LinkedIn and enjoy talking with people and learning about their backgrounds. I like birds (ducks are a strong favorite) and my favorite color is orange (if you couldn’t tell by my website!). My go-to fun fact is that I have an identical twin brother. This page is still somewhat a work in progress — but as is anything with life.</p>
+            </div>
+    </div>
+
+    <div id="skills-page" class="subpage">
+        <button class="back-button" id="skills-back-button">&larr; Back</button>
+        <h1 class="page-main-title">My Skills</h1>
+        <p class="page-top-editable-text">A dynamic and evolving skillset tailored for modern educational challenges.</p>
+        <div class="content">
+            <h2><i class="fas fa-tools"></i>Software & Tools</h2>
+            <ul>
+                <li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook, Teams)</li>
+                <li>Google Workspace (Docs, Sheets, Slides, Drive, Classroom, Meet)
+                    <ul><li>WORKSPACE SUBBULLET PLACEHOLDER</li></ul>
+                </li>
+                <li>Video Editing (e.g., DaVinci Resolve, Adobe Premiere basics)</li>
+                <li>Graphic Design (Canva, Adobe Photoshop basics)
+                    <ul><li>GRAPHIC DESIGN SUBBULLET PLACEHOLDER</li></ul>
+                </li>
+                <li>Learning Management Systems (LMS) - e.g., Moodle, Blackboard, Canvas</li>
+            </ul>
+            <h2><i class="fas fa-language"></i>Languages</h2>
+            <ul><li>English (Native)</li><li>Spanish (Advanced Proficiency - NYS Seal of Biliteracy)</li></ul>
+            <h2><i class="fas fa-users-cog"></i>Professional Skills</h2>
+            <ul>
+                <li>Academic Research and Analysis</li>
+                <li>Technical and Creative Writing/Editing</li>
+                <li>Public Speaking and Presentation Design</li>
+                <li>Curriculum and Instructional Design</li>
+                <li>Teaching, Tutoring, and Mentorship</li>
+                <li>Leadership and Team Collaboration</li>
+                <li>Problem-Solving and Critical Thinking</li>
+                <li>Adaptability and Continuous Learning</li>
+                <li>Communication (Written, Verbal, Interpersonal)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="projects-page" class="subpage gallery-page">
+        <button class="back-button" id="projects-back-button">&larr; Back</button>
+        <h1 class="page-main-title">Projects</h1>
+        <p class="page-top-editable-text">A collection of projects demonstrating practical application of skills.</p>
+        <div class="content">
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div class="project-icon-container"><i class="fas fa-file-alt"></i></div>
+                    <h4>AI, Note-Taking, and the Student Experience (INTED 2025)</h4>
+                    <p class="item-short-desc">Published and presented research analyzing the AI landscape and its impact on student note-taking, proposing the GAIN framework.</p>
+                    <button class="item-info-btn" data-clipboard-target="clipboard-project-inted" title="More Info"><i class="fas fa-circle-info"></i></button>
+                </div>
+                <div class="gallery-item">
+                    <div class="project-icon-container"><i class="fas fa-gamepad"></i></div>
+                    <h4>ALOUD Language Learning Game (ALOUD 2025)</h4>
+                    <p class="item-short-desc">Created and presented an interactive language-learning video game to K-12 teachers at the ALOUD conference.</p>
+                    <button class="item-info-btn" data-clipboard-target="clipboard-project-aloud" title="More Info"><i class="fas fa-circle-info"></i></button>
+                </div>
+                 <div class="gallery-item">
+                    <div class="project-icon-container"><i class="fas fa-cogs"></i></div>
+                    <h4>Marist+AI Academic Working Group</h4>
+                    <p class="item-short-desc">Student representative in the Marist+AI working group, guiding AI integration and policy at the university.</p>
+                    <button class="item-info-btn" data-clipboard-target="clipboard-project-marist-ai" title="More Info"><i class="fas fa-circle-info"></i></button>
+                </div>
+                <div class="gallery-item">
+                    <div class="project-icon-container"><i class="fas fa-newspaper"></i></div>
+                    <h4>The Marist Circle - Editorial & Writing</h4>
+                    <p class="item-short-desc">Currently Co-Features Editor, formerly Staff Writer, for Marist University's newspaper. <a href="#" target="_blank" rel="noopener noreferrer" class="inline-text-link">View my work here.</a> </p>
+                    <button class="item-info-btn" data-clipboard-target="clipboard-extra-marist-circle" title="More Info"><i class="fas fa-circle-info"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-content-source" id="clipboard-project-inted"><h4>Research Paper on AI, Note-Taking, and the Student Experience (INTED 2025)</h4><p>I worked closely with two professors and a fellow student to create a research paper that analyzed the AI landscape and how it shapes student note-taking. My presentation went over the tools that existed, but also mentioned how educators and students can evaluate and be aware of these tools. The details on its publishing are available <a href="#" target="_blank" rel="noopener noreferrer">here</a>. </p><h5>Abstract</h5><p>The integration of artificial intelligence (AI) in educational settings has marked a shift in how students engage with classroom content, particularly in their notetaking practices. This study introduces the Generative Artificial Intelligence Note-taking (GAIN) framework, a new approach designed to balance the efficiency of AI tools with the cognitive benefits of traditional note-taking methods. Our research examines the complex relationship between technological innovation and cognitive processing in the context of academic notetaking, addressing a growing concern that while AI tools enhance efficiency, they may compromise the learning process. Through comprehensive analysis of established note-taking practices and emerging AI technologies, we evaluate the impact of these tools across four learning phases: pre-class preparation, during-class note-taking, post-class review, and long-term retention. The methodology analyzes various AI platforms, including real-time transcription services, interactive study tools, and AI-powered note enhancement applications, examining the effectiveness in each learning phase and the impact on student engagement and information retention. Our investigation shows that while AI tools offer significant advantages in capturing and organizing information, they may reduce the "desirable difficulty" essential for deep learning and retention. This reduction in cognitive engagement poses a challenge to effective learning outcomes, as traditional handwritten notes have been shown to promote deeper processing through active synthesis and paraphrasing. The GAIN framework addresses these challenges by proposing structured guidelines for integrating AI tools while maintaining active cognitive engagement. It emphasizes the importance of metacognitive practices and provides strategies for each learning phase, ensuring that technology enhances rather than replaces critical thinking processes. Our findings suggest optimal learning outcomes are achieved when AI tools supplement rather than replace traditional note-taking methods, with specific recommendations for implementation across different educational contexts and subject areas. The framework offers practical guidance for both educators and students, detailing how to leverage various AI tools effectively while preserving the cognitive benefits inherent in manual notetaking. This includes strategies for using AI transcription during lectures while maintaining active engagement, employing AI-powered review tools to enhance post-class synthesis, and utilizing AI features for long-term retention without compromising deep learning. Additionally, our research explores the potential of AI tools to support diverse learning styles and accommodate different educational needs, while maintaining the critical balance between technological assistance and cognitive development. This study contributes significantly to the growing discourse on educational technology by providing a structured approach to incorporating AI tools in academic settings. The GAIN framework represents a practical solution to the challenge of modernizing educational practices while preserving the fundamental cognitive processes essential for effective learning. Our findings have important implications for curriculum design, teaching methodologies, and the development of future educational technologies, suggesting a path forward that embraces innovation while maintaining the integrity of the learning process.</p></div>
+    <div class="hidden-content-source" id="clipboard-project-aloud"><h4>ALOUD Language Learning Game (ALOUD 2025) Details</h4><p>For the ALOUD (2025) academic conference, I created and presented a functioning language-learning video game to K-12 teachers. The game incorporated interactive scenarios, vocabulary building, and cultural elements. The project involved game design principles, basic programming (using Ren'Py), and creating engaging educational content. It was presented to an audience of K-12 teachers and language educators, focusing on innovative ways to engage students in Spanish language acquisition.</p><p><a href="#" target="_blank" rel="noopener noreferrer" class="play-game-link">Play the game here</a></p> </div>
+    <div class="hidden-content-source" id="clipboard-project-marist-ai"><h4>Marist+AI Academic Working Group Details</h4><p>Status: Active (October 2024—)</p><p>As one of the two student representatives in the Marist + AI working group, I’m helping learn more about AI technology as well as guide and give my knowledge on the subject to professors and deans of Marist to help them to achieve a vision at Marist that integrates AI in a responsible, useful way. I collaborated with faculty to develop an AI framework at Marist and created, edited, and commented on multiple pieces of documentation and framework material.</p><p>I gave a quote for the group on an Inside Marist article: <a href="#" target="_blank" rel="noopener noreferrer">"Marist+AI Initiative Looks at How to Responsibly Harness the Power of AI"</a>. You can learn more about the project here: <a href="#" target="_blank" rel="noopener noreferrer">AI Steering Committee - Marist College</a>. </p></div>
+    <div class="hidden-content-source" id="clipboard-extra-marist-circle"> <h4>Journalistic Skills & Marist Circle Contributions</h4>
+        <p>This is the newspaper club at Marist University, where I am currently a Co-Features Editor. You can view my work <a href="#" target="_blank" rel="noopener noreferrer" class="inline-text-link">here</a>. </p>
+        <h5>Journalistic Skills</h5><p>All of my articles are on topics that I found interesting, or just general happenings on campus. I pride myself in variety and quality writing.</p>
+        <h5>As an Editor</h5><p>Everything as a staff writer, plus…</p>
+        <ul>
+            <li><strong>Editing:</strong> I reviewed and edited articles written by fellow writing staff, not just for grammar or clarity but for narrative structure, tone, and factual consistency. I ensured pieces adhered to our editorial standards and provided detailed suggestions to help writers improve their voice and writing style. The writer’s voice is always at the core.</li>
+            <li><strong>Constructive Feedback:</strong> I gave personalized feedback to writers—whether that was switching up a paragraph, refining phrasing, or improving clarity. My goal was always to help writers grow, not just fix things.</li>
+            <li><strong>Leadership:</strong> I responded to communications regularly and oriented staff writers as needed. I played a part in the collaborative direction of our editorial calendar, made sure pitches aligned with our sectioning and audience, and mentored newer writers as they adjusted to the writing process.</li>
+        </ul>
+        <h5>As a Staff Writer</h5>
+        <ul>
+            <li><strong>Pitching:</strong> I pitched topics to editors on things on opinions I found important or things that needed to be highlighted on campus. This required having the idea prior to the pitch meeting and being able to formulate it to editors.</li>
+            <li><strong>Writing & Interviewing:</strong> If it has my name on it, I actually wrote it. I pride myself in being able to write consistently, in time with deadlines, and with accurate information. Quotes are important, and I’ve achieved them through both in-person and online (email) interviews. That involves coordinating interviews, asking thought provoking questions, and reporting what’s important.</li>
+            <li><strong>Publishing:</strong> I take feedback and apply it. I’ve used feedback I’ve received to improve future work and act on feedback I receive instead of just taking it in without action. I grow and take critique.</li>
+            <li><strong>Photos:</strong> I either proposed, found, or more often than not took and edited photos for my articles. This involved understanding the context of the article and keeping journalistic style in mind.</li>
+        </ul>
+        <h5>Selected Works from the Marist Circle by Owen Whelan</h5>
+        <ul>
+            <li><a href="https://www.maristcircle.com/features/2024/4/16/visionaries-of-tomorrow-measure-magazine-to-feature-ai-generated-student?rq=owen%20whelan" target="_blank" rel="noopener noreferrer">Visionaries of Tomorrow: Measure Magazine to Feature AI Generated Student</a></li>
+            <li><a href="https://www.maristcircle.com/opinion/2024/10/24/linkin-park-chester-benningtons-second-death?rq=owen%20whelan" target="_blank" rel="noopener noreferrer">Linkin Park: Chester Bennington’s Second Death</a></li>
+            <li><a href="https://www.maristcircle.com/home/2024/10/3/mporium-kicks-off-collegiate-core-store-theme?rq=owen%20whelan" target="_blank" rel="noopener noreferrer">MPorium Kicks Off “Collegiate Core” Store Theme</a></li>
+            <li><a href="https://www.maristcircle.com/opinion/2024/11/4/brave-students-dodge-golf-carts-scooters-on-campus?rq=owen%20whelan" target="_blank" rel="noopener noreferrer">Brave Students Dodge Golf Carts, Scooters on Campus</a></li>
+            <li><a href="https://www.maristcircle.com/opinion/2024/11/22/sorry-wordlers-linkedin-games-are-just-better?rq=owen%20whelan" target="_blank" rel="noopener noreferrer">Sorry, Wordlers: LinkedIn Games Are Just Better</a></li>
+        </ul>
+    </div>
+
+
+    <div id="extras-page" class="subpage gallery-page">
+        <button class="back-button" id="extras-back-button">&larr; Back</button>
+        <h1 class="page-main-title">Extras</h1>
+        <p class="page-top-editable-text">A collection of awards, publications, and other notable involvements.</p>
+        <div class="content">
+            <div class="gallery">
+                 <div class="gallery-item">
+                     <div class="project-icon-container extras-icon-visual"><i class="fas fa-award"></i></div>
+                    <h4>Sigma Delta Pi (ΣΔΠ)</h4>
+                    <p class="item-short-desc">Inducted into the National Collegiate Hispanic Honor Society for dedication to Spanish language and culture.</p>
+                    <button class="item-info-btn" data-clipboard-target="clipboard-extra-sigma-delta-pi" title="More Info"><i class="fas fa-circle-info"></i></button>
+                </div>
+                <div class="gallery-item">
+                    <div class="project-icon-container extras-icon-visual"><i class="fas fa-star"></i></div>
+                   <h4>Marist University Dean's List</h4>
+                   <p class="item-short-desc">Recognized for academic excellence, receiving Dean's List honors multiple times.</p>
+                   <button class="item-info-btn" data-clipboard-target="clipboard-extra-deans-list" title="More Info"><i class="fas fa-circle-info"></i></button>
+               </div>
+               <div class="gallery-item">
+                    <div class="project-icon-container extras-icon-visual"><i class="fas fa-certificate"></i></div>
+                   <h4>NYS Seal of Biliteracy (Spanish)</h4>
+                   <p class="item-short-desc">Awarded for demonstrated proficiency in Spanish (speaking, listening, reading, writing).</p>
+                   <button class="item-info-btn" data-clipboard-target="clipboard-extra-seal-biliteracy" title="More Info"><i class="fas fa-circle-info"></i></button>
+               </div>
+               <div class="gallery-item">
+                    <div class="project-icon-container extras-icon-visual"><i class="fas fa-shield-alt"></i></div>
+                   <h4>National Honor Society</h4>
+                   <p class="item-short-desc">Inducted for dedication to academics and service in high school.</p>
+                   <button class="item-info-btn" data-clipboard-target="clipboard-extra-nhs" title="More Info"><i class="fas fa-circle-info"></i></button>
+               </div>
+                <div class="gallery-item">
+                     <div class="project-icon-container extras-icon-visual"><i class="fas fa-feather-alt"></i></div>
+                    <h4>Marist Mosaic - Published Poem</h4>
+                    <p class="item-short-desc">Poetry published in the Marist College literary arts journal, "Mosaic." <a href="#" target="_blank" rel="noopener noreferrer" class="inline-text-link">Check it out.</a> </p>
+                    <button class="item-info-btn" data-clipboard-target="clipboard-extra-mosaic" title="More Info"><i class="fas fa-circle-info"></i></button>
+                </div>
+                </div>
+        </div>
+    </div>
+    <div class="hidden-content-source" id="clipboard-extra-sigma-delta-pi"><h4>Sigma Delta Pi (ΣΔΠ) - National Collegiate Hispanic Honor Society</h4><p>Inducted October 2024. This is the National Honors Society for Spanish on the college level. I also received it in high school. Being a member of ΣΔΠ shows a dedication to values that make up a good student as well as someone who is knowledgeable of Spanish and Spanish-speaking cultures. You can read about Sigma Delta Pi from <a href="#" target="_blank" rel="noopener noreferrer">their website</a>. </p></div>
+    <div class="hidden-content-source" id="clipboard-extra-deans-list"><h4>Marist University Dean's List Details</h4><p>Various, received several times (currently at 3). Received the Dean’s List from Marist University in both the Fall 2023 and Spring 2024 semesters, representing my dedication to academics. You can view me and all Dean’s List members of Marist from <a href="#" target="_blank" rel="noopener noreferrer">their website</a>. </p></div>
+    <div class="hidden-content-source" id="clipboard-extra-seal-biliteracy"><h4>New York State Seal of Biliteracy (Spanish) Details</h4><p>Completed May 2022, awarded June 2023. Through Nanuet Senior High School, I completed the requirements for the New York State Seal of Biliteracy in 2022 and was awarded it upon my graduation in 2023. It demonstrates my proficiency in Spanish through speaking, listening, reading, and writing. My focus for the project was on technology and how it affects language and translation as a whole. You can learn about the New York State Seal of Biliteracy from <a href="#" target="_blank" rel="noopener noreferrer">their website</a>. </p></div>
+    <div class="hidden-content-source" id="clipboard-extra-nhs"><h4>National Honor Society Details</h4><p>Inducted 2022. Encompassing my dedication to academics and service in high school, I became a member of the National Honors Society in 2022. You can learn about the National Honors Society from <a href="#" target="_blank" rel="noopener noreferrer">their website</a>. </p></div>
+    <div class="hidden-content-source" id="clipboard-extra-mosaic"><h4>Marist Mosaic Poem Details</h4><p>Placeholder: Provide details about your published poem in "Mosaic." You could include the title of the poem, a brief excerpt, or discuss the themes and inspiration behind it. Mention the significance of being published in the college's literary journal.</p></div>
+
+    <div id="resume-web-page" class="subpage">
+        <button class="back-button" id="resume-web-back-button">← Back</button>
+        <h1 class="page-main-title">Résumé</h1>
+        <div class="content">
+            <div class="resume-contact-header">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:owenw2023@gmail.com">owenw2023@gmail.com</a> (Personal)</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:owen.whelan1@marist.edu">owen.whelan1@marist.edu</a> (Academic)</p>
+                <p><i class="fas fa-globe"></i> <a href="http://owenwhelan.com" target="_blank" rel="noopener noreferrer">owenwhelan.com</a></p>
+            </div>
+
+            <h2>Summary</h2>
+            <p>Motivated honors student in adolescent Spanish education and applied AI, experienced in tutoring, teaching assistance, research, and editorial work. Proficient in AI, language, writing, and collaboration; passionate about education, technology, and communication.</p>
+
+            <h2>Work Experience</h2>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Instructional Technology Intern (Full Time, 2025 & ongoing)</span><button class="item-info-btn" data-info-id="resume-info-it-intern" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
+                <p>Created resources for faculty and students to understand artificial intelligence and its impact.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Rockland BOCES Substitute Teaching Assistant (Contract, 2025 & ongoing)</span><button class="item-info-btn" data-info-id="resume-info-boces-ta" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">CLARKSTOWN, NEW YORK</p>
+                <p>Assisted full-time teachers in instructing neurodivergent students during full, 7-hour instructional days.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Tutoring (Freelance, 2025)</span><button class="item-info-btn" data-info-id="resume-info-tutoring" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">VIRTUAL</p>
+                <p>Tutored high school students in Spanish and science, seeing grade improvements by up to 30 percentile points.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Clarkstown Pools Cashier (Seasonal, 2021-2024)</span><button class="item-info-btn" data-info-id="resume-info-pools-cashier" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">CLARKSTOWN, NEW YORK</p>
+                <p>Handled cash, assisted patrons (as much as 500+ per day), and collaborated with staff.</p>
+            </div>
+
+            <h2>Educational Experience</h2>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Marist University, Honors Student (2023 - Present)</span><button class="item-info-btn" data-info-id="resume-info-marist-edu" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
+                <ul>
+                    <li>Majoring in adolescent education in Spanish with a GPA of 3.9+</li>
+                    <li>Minoring in applied artificial intelligence and pursuing a Technology & Society pathway</li>
+                    <li>Anticipated graduation in 2027, anticipated graduate degree in 2028</li>
+                </ul>
+            </div>
+
+            <h2>Research & Experience</h2>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Publication for International Technology, Education and Development (INTED) (2025)</span><button class="item-info-btn" data-info-id="resume-info-inted" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">VALENCIA, SPAIN</p>
+                <p>Presented to an international audience after a year of exploratory research. Worked on a research project with professors and a student on artificial intelligence and note-taking.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Marist+AI Academic Group (2024-Present)</span><button class="item-info-btn" data-info-id="resume-info-marist-ai" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
+                <p>Collaborated with faculty to develop an AI framework at Marist. Created, edited, and commented on multiple pieces of documentation and framework material.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Other Academic Conferences</span><button class="item-info-btn" data-info-id="resume-info-conferences" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
+                <ul>
+                    <li>ALOUD (2025): Created and presented a language-learning video game to K-12 teachers.</li>
+                    <li>CURSCA (2025): Developed and presented a poster with academic research on artificial intelligence.</li>
+                </ul>
+            </div>
+
+            <h2>Extracurriculars</h2>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Marist Circle Co-Features Editor (2025-Present)</span><button class="item-info-btn" data-info-id="resume-info-circle-editor" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
+                <p>Edited up to 3 articles per issue; authored 15+ pieces total. Pitched stories, coordinated team assignments, assisted cross-campus distribution.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Marist Circle Staff Writer (2023-2024)</span><button class="item-info-btn" data-info-id="resume-info-circle-writer" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
+                <p>Writing above-average quantity of newspaper articles (as much as 2 an issue) with consistent attention to quality.</p>
+            </div>
+            <div class="resume-item">
+                <h3><span class="item-title-text">Marist Games Society - Subcommittee Leader (2024-Present)</span><button class="item-info-btn" data-info-id="resume-info-games-society" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK AND VIRTUAL</p>
+                <p>Coordinating and helping new students integrate into groups, attendance and coordination of own group.</p>
+            </div>
+
+            <h2>Awards</h2>
+            <ul>
+                <li>Dean's List, Marist University (2024, 2025; 3x) <button class="item-info-btn" data-info-id="resume-info-deans-list" title="More info"><i class="fas fa-circle-info"></i></button></li>
+                <li>Sigma Delta Pi, Marist University (2024) Spanish honors society <button class="item-info-btn" data-info-id="resume-info-sigma-delta-pi" title="More info"><i class="fas fa-circle-info"></i></button></li>
+                <li>National Honors Society (2023) <button class="item-info-btn" data-info-id="resume-info-nhs" title="More info"><i class="fas fa-circle-info"></i></button></li>
+            </ul>
+
+            <h2>Other Skills</h2>
+            <ul>
+                <li>Productivity: Google Suite, Microsoft Suite (advanced formatting).</li>
+                <li>Artificial Intelligence: Strong knowledge of prominent AI tools and effective, innovative application.</li>
+                <li>Video creation: Filming, editing, exporting.</li>
+                <li>Creative work: Graphic design (Photoshop, Canva), digital illustration.</li>
+                <li>Spanish: Conversational, written, and professional communication.</li>
+                <li>Template Building: Creating lessons and materials that are "turn-key" ready for educators.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hidden-content-source" id="content-instructional-tech-intern">
+        <h2>Instructional Technology Intern</h2>
+        <p>As a full-time Instructional Technology Intern at Marist College (Poughkeepsie, NY, 2025 & ongoing), I create resources for faculty and students to understand artificial intelligence and its impact. </p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="AI in Education,Instructional Technology,Resource Development,Faculty Support,Student Support,Content Creation"></div>
+    </div>
+    <div class="hidden-content-source" id="content-ai-research-combo">
+        <h2>AI Research (INTED & CURSCA)</h2>
+        <p>Presented original research on AI's role in education. For INTED 2025 (Valencia, Spain), I co-authored and presented a paper on AI and student note-taking, introducing the GAIN framework. For CURSCA 2025 (Marist), I developed and presented a poster detailing academic research on artificial intelligence applications. </p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="Research,AI,Presentation,Academic Writing,International Conference"></div>
+    </div>
+    <div class="hidden-content-source" id="content-marist-ai-group">
+        <h2>Marist+AI Academic Group</h2>
+        <p>As one of two student representatives in the Marist+AI working group (Active October 2024—), I contribute to guiding the integration of AI at Marist College responsibly. This involves learning about AI technology, sharing knowledge with professors and deans, and collaborating on the development of an AI framework, including creating and editing documentation.</p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="AI Ethics,Collaboration,Framework Design,Documentation,Policy Development"></div>
+    </div>
+    <div class="hidden-content-source" id="content-boces-ta">
+        <h2>Teaching Assistant (Rockland BOCES)</h2>
+        <p>Provided classroom support as a substitute teaching assistant for neurodivergent students in Clarkstown, NY. Adapted instructional materials, facilitated learning activities, and assisted with classroom management in full-day settings (2025 & ongoing).</p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="Teaching,Special Education,Adaptability,Patience,Classroom Support"></div>
+    </div>
+    <div class="hidden-content-source" id="content-freelance-tutoring">
+        <h2>Freelance Tutoring</h2>
+        <p>Offered virtual private tutoring services to high school students in Spanish and various science subjects. Developed personalized learning plans that led to significant grade improvements (up to 30 percentile points) in 2025.</p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="Tutoring,Mentorship,Spanish,Science Education,Personalized Learning"></div>
+    </div>
+    <div class="hidden-content-source" id="content-aloud-game">
+        <h2>ALOUD Language Learning Game</h2>
+        <p>Developed and presented a functional prototype of a language-learning video game at the ALOUD academic conference (Poughkeepsie, NY, 2025). Aimed at K-12 teachers, the game demonstrated innovative ways to engage students in Spanish language acquisition.</p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="Game Development,Educational Technology,Spanish,Presentation,Innovation"></div>
+    </div>
+    <div class="hidden-content-source" id="content-marist-circle"> <h2>The Marist Circle - Editorial & Writing</h2>
+        <p>Currently Co-Features Editor (2025-Present), formerly Staff Writer (2023-2024), for Marist University's newspaper. Extensive experience in pitching, writing, interviewing, editing, and leadership within a journalistic environment. <a href="#" target="_blank" rel="noopener noreferrer" class="inline-text-link">View my work here.</a> </p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="Writing,Editing,Leadership,Journalism,Communication,Teamwork"></div>
+    </div>
+    <div class="hidden-content-source" id="content-games-society">
+        <h2>Games Society Leadership</h2>
+        <p>Acted as a Subcommittee Leader for the Marist Games Society (Poughkeepsie, NY & Virtual, 2024-Present), focusing on coordinating group activities, fostering an inclusive environment, and helping new members integrate.</p>
+        <p><strong>Stats:</strong> Placeholder</p>
+        <div class="pills-data" data-pills="Leadership,Coordination,Team Building,Community Management,Event Planning"></div>
+    </div>
+
+    <div class="hidden-info" id="resume-info-it-intern"><h4>Instructional Technology Intern Details</h4><p>This ongoing role involves researching emerging AI technologies relevant to education, creating accessible guides and tutorials for various AI tools, and assisting with workshops for faculty and students on AI literacy and application. Aims to promote responsible and effective AI use across the Marist College community.</p></div>
+    <div class="hidden-info" id="resume-info-boces-ta"><h4>Rockland BOCES TA Details</h4><p>Focused on creating an inclusive environment and adapting teaching methods to individual student needs. Gained valuable experience in special education practices, behavior management techniques, and collaborative teaching within a structured educational setting for neurodivergent learners.</p></div>
+    <div class="hidden-info" id="resume-info-tutoring"><h4>Freelance Tutoring Details</h4><p>Specialized in making complex topics in Spanish grammar and science (biology, chemistry) accessible and engaging for high school students. Utilized various teaching resources, including digital tools, and tracked student progress closely to adjust strategies, leading to measurable improvements in grades and confidence.</p></div>
+    <div class="hidden-info" id="resume-info-pools-cashier"><h4>Clarkstown Pools Cashier Details</h4><p>Managed high-volume cash transactions accurately, provided information about pool facilities and programs, and resolved customer inquiries efficiently during busy summer seasons. Developed strong interpersonal, communication, and problem-solving skills in a fast-paced, public-facing environment. Collaborated with a team of 10-15 staff members.</p></div>
+    <div class="hidden-info" id="resume-info-marist-edu">
+        <h4>Marist University Details</h4>
+        <p>I am currently a sophomore at Marist University studying Adolescent Education in Spanish with a pathway in Technology & Society and completing requirements for the honors program. I am minoring in Applied Artificial Intelligence. I am expected to graduate with my Bachelor’s degree in 2027. As a part of Marist’s 4+1 program, I am expected to receive my Master’s degree in 2028. Consistently on Dean's List.</p>
+        <h5>Class Highlights:</h5>
+        <ul>
+            <li>Experiences in Hispanic Literature: Reading, analyzing, and writing papers on fictional works written by famous Latin American and Spanish authors, including works such as Don Quixote and Como agua para chocolate. (Grade: A)</li>
+            <li>The Exceptional Child: Learning about children with disabilities and how to address them in a respectful, appropriate manner. (Grade: A)</li>
+            <li>Foundations of Education: Involved shadowing a teacher in a 5th/7th grade classroom, analyzing how the classroom structure works and learning about the dynamic between teacher and student. 15 hours completed. (Grade: Pass)</li>
+        </ul>
+        </div>
+    <div class="hidden-info" id="resume-info-inted"><h4>INTED Publication Details</h4><p>The research explored the efficacy of AI-powered note-taking tools versus traditional methods for college students, considering factors like retention, organization, and critical engagement with material. The presentation included a live demonstration of selected AI tools and a Q&A session with international educators and researchers.</p></div>
+    <div class="hidden-info" id="resume-info-marist-ai"><h4>Marist+AI Group Details</h4><p>Contributed to sections on AI in the humanities and arts, AI for accessibility, and pedagogical best practices for AI integration within the proposed institutional framework. Participated in workshops and discussions on responsible AI deployment, data privacy, and academic integrity in an AI-enhanced academic setting.</p></div>
+    <div class="hidden-info" id="resume-info-conferences"><h4>Other Academic Conferences Details</h4><p>The ALOUD language-learning game project involved Python programming (using Ren'Py) and educational game design principles to create an interactive narrative. The CURSCA poster focused on AI-driven personalized learning paths, their potential impact on student engagement, and ethical considerations for K-12 education.</p></div>
+    <div class="hidden-info" id="resume-info-circle-editor"><h4>Marist Circle Editor Details</h4><p>As Co-Features Editor, responsibilities include managing a team of writers for the Features section, providing constructive feedback on drafts, ensuring adherence to journalistic standards and AP style, and contributing to editorial decisions for content and layout. Authored over 15 pieces on diverse campus topics, including investigative reports and student profiles.</p></div>
+    <div class="hidden-info" id="resume-info-circle-writer"><h4>Marist Circle Writer Details</h4><p>Known for timely and well-researched articles covering campus news, student life, arts and culture, and local events. Often took on multiple assignments per issue, demonstrating versatility and commitment to quality journalism.</p></div>
+    <div class="hidden-info" id="resume-info-games-society"><h4>Games Society Leader Details</h4><p>Organized weekly meetings, special events (tournaments, guest speakers on game development), and managed online communication for a subcommittee focused on narrative-driven and educational games. Facilitated discussions on game design and industry trends.</p></div>
+    <div class="hidden-info" id="resume-info-deans-list"><h4>Dean's List Significance</h4><p>Awarded to students achieving a high GPA (typically 3.6 or above on a 4.0 scale) for a semester, demonstrating consistent academic excellence across all coursework.</p></div>
+    <div class="hidden-info" id="resume-info-sigma-delta-pi"><h4>Sigma Delta Pi Details</h4><p>Membership in the National Collegiate Hispanic Honor Society (La Sociedad Nacional Honoraria Hispánica) recognizes outstanding achievement in the study of Spanish language, literature, and culture at the university level.</p></div>
+    <div class="hidden-info" id="resume-info-nhs"><h4>National Honor Society Details</h4><p>Membership based on the four pillars of scholarship, leadership, service, and character during high school, recognizing well-rounded student achievement.</p></div>
+
+
+    <div id="info-sidebar">
+        <button id="close-sidebar-btn" title="Close">&times;</button>
+        <div id="sidebar-content"></div>
+    </div>
+
+    <div id="clipboard-panel-container">
+        </div>
+
+
+    <script>
+    // Encapsulated Highlights Module (New Logic)
+    const highlightsModule = (() => {
+        // Configuration
+        const SCROLL_AMOUNT = 220; // How much to scroll per arrow click (approx 2-3 items)
+
+        // Cached DOM Elements
+        let itemShelf, shelfPrevArrow, shelfNextArrow;
+        let contentCanvas, canvasPlaceholder, canvasContentArea, canvasPillsContainer;
+        let filterButtonsContainer;
+        let allShelfItems = []; // To store all original items for filtering
+
+        function cacheDOMElements() {
+            itemShelf = document.getElementById('item-shelf');
+            shelfPrevArrow = document.getElementById('shelf-prev-arrow');
+            shelfNextArrow = document.getElementById('shelf-next-arrow');
+            contentCanvas = document.getElementById('content-canvas');
+            canvasPlaceholder = document.getElementById('canvas-placeholder');
+            canvasContentArea = document.getElementById('canvas-content-area');
+            canvasPillsContainer = document.querySelector('.canvas-pills-container');
+            filterButtonsContainer = document.querySelector('.highlights-filters');
+            if (itemShelf) { // Only query if shelf exists
+                allShelfItems = Array.from(itemShelf.querySelectorAll('.info-box'));
+            }
+        }
+
+        function updateShelfArrowVisibility() {
+            if (!itemShelf || !shelfPrevArrow || !shelfNextArrow) return;
+
+            const visibleItems = itemShelf.querySelectorAll('.info-box:not(.hidden)');
+            if (visibleItems.length === 0 || itemShelf.scrollWidth <= itemShelf.clientWidth) {
+                shelfPrevArrow.classList.add('hidden');
+                shelfNextArrow.classList.add('hidden');
+                return;
+            }
+
+            const maxScrollLeft = itemShelf.scrollWidth - itemShelf.clientWidth;
+            shelfPrevArrow.classList.toggle('hidden', itemShelf.scrollLeft <= 0);
+            shelfNextArrow.classList.toggle('hidden', itemShelf.scrollLeft >= maxScrollLeft - 2); // -2 for precision
+        }
+
+        function scrollShelf(direction) {
+            if (!itemShelf) return;
+            itemShelf.scrollLeft += direction * SCROLL_AMOUNT;
+            // updateShelfArrowVisibility will be called by the 'scroll' event listener for smoother updates
+        }
+
+        function populateCanvas(contentId) {
+            const sourceElement = document.getElementById(contentId);
+            if (!sourceElement || !canvasContentArea || !canvasPlaceholder || !canvasPillsContainer) {
+                console.warn('Required elements for populating canvas not found.');
+                resetCanvas(); // Clear canvas if content source is missing
+                if(canvasPlaceholder) canvasPlaceholder.textContent = "Content not found.";
+                return;
+            }
+
+            canvasContentArea.innerHTML = '';
+            canvasPillsContainer.innerHTML = '';
+
+            const clonedContent = sourceElement.cloneNode(true);
+            const pillsDataEl = clonedContent.querySelector('.pills-data');
+
+            if (pillsDataEl && pillsDataEl.dataset.pills) {
+                const skills = pillsDataEl.dataset.pills.split(',');
+                skills.forEach(skillText => {
+                    const pill = document.createElement('span');
+                    pill.className = 'pill';
+                    pill.textContent = skillText.trim();
+                    canvasPillsContainer.appendChild(pill);
+                });
+                canvasPillsContainer.style.display = 'flex';
+                pillsDataEl.remove();
+            } else {
+                canvasPillsContainer.style.display = 'none';
+            }
+
+            while (clonedContent.firstChild) {
+                canvasContentArea.appendChild(clonedContent.firstChild);
+            }
+
+            canvasPlaceholder.style.display = 'none';
+            canvasContentArea.style.display = 'block';
+            canvasContentArea.scrollTop = 0;
+
+            canvasContentArea.classList.remove('fadeIn');
+            void canvasContentArea.offsetWidth;
+            canvasContentArea.classList.add('fadeIn');
+        }
+
+        function resetCanvas() {
+            if (!canvasContentArea || !canvasPlaceholder || !canvasPillsContainer) return;
+            canvasContentArea.innerHTML = '';
+            canvasContentArea.style.display = 'none';
+            canvasPillsContainer.innerHTML = '';
+            canvasPillsContainer.style.display = 'none';
+            canvasPlaceholder.textContent = "Drag or Click an item to learn more!";
+            canvasPlaceholder.style.display = 'block';
+            if (contentCanvas) contentCanvas.classList.remove('over');
+        }
+
+        function applyFilter(category) {
+            if (!itemShelf) return;
+            allShelfItems.forEach(item => {
+                const itemCategories = item.dataset.category ? item.dataset.category.split(' ') : [];
+                const matchesCategory = (category === 'all' || itemCategories.includes(category));
+                item.classList.toggle('hidden', !matchesCategory);
+            });
+            itemShelf.scrollLeft = 0;
+            updateShelfArrowVisibility();
+            resetCanvas();
+        }
+
+        function handleShelfItemInteraction(event) {
+            let targetItem = event.target.closest('.info-box');
+             if (event.type === 'drop') {
+                event.preventDefault();
+                if(contentCanvas) contentCanvas.classList.remove('over');
+                const draggedBoxId = event.dataTransfer.getData('text/plain');
+                targetItem = document.getElementById(draggedBoxId);
+            }
+
+            if (targetItem) {
+                const contentId = targetItem.dataset.contentId;
+                if (contentId) {
+                    populateCanvas(contentId);
+                }
+            }
+        }
+
+        function setupEventListeners() {
+            if (!itemShelf) return;
+
+            shelfPrevArrow?.addEventListener('click', () => scrollShelf(-1));
+            shelfNextArrow?.addEventListener('click', () => scrollShelf(1));
+            itemShelf.addEventListener('scroll', updateShelfArrowVisibility);
+
+            itemShelf.addEventListener('click', handleShelfItemInteraction);
+
+            allShelfItems.forEach(box => {
+                box.addEventListener('dragstart', (e) => {
+                    if(!e.target.classList.contains('info-box')) return;
+                    e.dataTransfer.setData('text/plain', e.target.id);
+                    e.dataTransfer.effectAllowed = 'copy';
+                });
+            });
+
+            contentCanvas?.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'copy';
+                contentCanvas.classList.add('over');
+                if(canvasPlaceholder) canvasPlaceholder.textContent = 'Release to drop!';
+            });
+            contentCanvas?.addEventListener('dragleave', (e) => {
+                if (!contentCanvas.contains(e.relatedTarget) || e.relatedTarget === null) {
+                    contentCanvas.classList.remove('over');
+                    if(canvasPlaceholder && canvasContentArea.style.display === 'none') {
+                        canvasPlaceholder.textContent = "Drag or Click an item to learn more!";
+                    }
+                }
+            });
+            contentCanvas?.addEventListener('drop', handleShelfItemInteraction);
+            contentCanvas?.addEventListener('click', (e) => {
+                if (e.target === contentCanvas) resetCanvas();
+            });
+
+            filterButtonsContainer?.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    filterButtonsContainer.querySelectorAll('.filter-btn.active').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    applyFilter(e.target.dataset.category);
+                }
+            });
+
+            window.addEventListener('resize', updateShelfArrowVisibility);
+        }
+
+        function init() {
+            cacheDOMElements();
+            if (!itemShelf) {
+                console.error("Highlights section essential elements (itemShelf) not found. Module not initialized.");
+                return;
+            }
+            setupEventListeners();
+            applyFilter('all');
+            console.log("Highlights Module Initialized (New Logic v2)");
+        }
+
+        return { init };
+    })();
+
+
+    // Main DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const mainWrapper = document.querySelector('.main-wrapper');
+        const subpages = document.querySelectorAll('.subpage');
+        const backButtons = document.querySelectorAll('.subpage .back-button');
+        const infoSidebar = document.getElementById('info-sidebar');
+        const sidebarContent = document.getElementById('sidebar-content');
+        const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+        const lastUpdatedElement = document.getElementById('last-updated');
+        const contactMenuButton = document.getElementById('contact-menu-button');
+        const pageFooter = document.getElementById('page-footer');
+
+        const viewPdfButtonMain = document.getElementById('view-full-pdf-main');
+        const viewResumeWebButtonMain = document.getElementById('view-resume-web-main');
+        const clipboardPanelContainer = document.getElementById('clipboard-panel-container');
+
+        const navAboutButton = document.getElementById('nav-about');
+        const navSkillsButton = document.getElementById('nav-skills');
+        const navProjectsButton = document.getElementById('nav-projects');
+        const navExtrasButton = document.getElementById('nav-extras');
+        const navResumeWebButton = document.getElementById('nav-resume-web');
+        const skillsMarquee = document.getElementById('skills-marquee');
+
+        function showSubpage(pageId) {
+            hideAllSubpages();
+            closeSidebar();
+            closeClipboardPanel();
+            if (mainWrapper) mainWrapper.style.display = 'none';
+            const pageElement = document.getElementById(pageId);
+            if (pageElement) pageElement.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showMainContent() {
+            hideAllSubpages();
+            closeSidebar();
+            closeClipboardPanel();
+            if (mainWrapper) mainWrapper.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function hideAllSubpages() {
+            subpages.forEach(page => {
+                if (page) page.style.display = 'none';
+            });
+        }
+
+        function openSidebar(infoId) {
+            const infoContentElement = document.getElementById(infoId);
+            if (infoSidebar && sidebarContent && infoContentElement) {
+                sidebarContent.innerHTML = infoContentElement.innerHTML;
+                infoSidebar.classList.add('active');
+            } else {
+                console.error("Sidebar elements or content not found for ID:", infoId);
+                if (infoSidebar && sidebarContent) {
+                    sidebarContent.innerHTML = "<p>Sorry, more information could not be loaded.</p>";
+                    infoSidebar.classList.add('active');
+                }
+            }
+        }
+
+        function closeSidebar() {
+            if (infoSidebar) infoSidebar.classList.remove('active');
+        }
+
+        function openClipboardPanel(targetId) {
+            const contentSource = document.getElementById(targetId);
+            if (!contentSource || !clipboardPanelContainer) return;
+            let panel = document.getElementById('dynamic-clipboard-panel');
+            if (!panel) {
+                panel = document.createElement('div');
+                panel.classList.add('clipboard-panel');
+                panel.id = 'dynamic-clipboard-panel';
+                clipboardPanelContainer.appendChild(panel);
+            }
+            panel.innerHTML = `
+                <div id="clipboard-content-area-dyn"></div>
+                <button class="close-clipboard-btn" title="Close Clipboard">&times;</button>
+            `;
+            document.getElementById('clipboard-content-area-dyn').innerHTML = contentSource.innerHTML;
+            panel.querySelector('.close-clipboard-btn').addEventListener('click', closeClipboardPanel);
+            setTimeout(() => { panel.classList.add('visible'); }, 50);
+        }
+
+        function closeClipboardPanel() {
+            const panel = document.getElementById('dynamic-clipboard-panel');
+            if (panel) {
+                panel.classList.remove('visible');
+            }
+        }
+
+        contactMenuButton?.addEventListener('click', () => pageFooter?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+        backButtons.forEach(button => button.addEventListener('click', showMainContent));
+
+        navAboutButton?.addEventListener('click', () => showSubpage('about-page'));
+        navSkillsButton?.addEventListener('click', () => showSubpage('skills-page'));
+        navProjectsButton?.addEventListener('click', () => showSubpage('projects-page'));
+        navExtrasButton?.addEventListener('click', () => showSubpage('extras-page'));
+        navResumeWebButton?.addEventListener('click', () => showSubpage('resume-web-page'));
+        viewResumeWebButtonMain?.addEventListener('click', () => showSubpage('resume-web-page'));
+        skillsMarquee?.addEventListener('click', () => showSubpage('skills-page'));
+
+        viewPdfButtonMain?.addEventListener('click', () => {
+             const pdfEmbed = document.querySelector('#resume-section .pdf-embed-placeholder iframe');
+             if (pdfEmbed?.src && !pdfEmbed.src.startsWith('data:') && pdfEmbed.src.toLowerCase() !== 'about:blank') {
+                 window.open(pdfEmbed.src, '_blank');
+             } else {
+                 const pdfLink = document.querySelector('#resume-section .pdf-embed-placeholder a');
+                 if (pdfLink?.href) window.open(pdfLink.href, '_blank');
+                 else console.error("Could not find PDF source to open directly.");
+             }
+         });
+
+        document.body.addEventListener('click', (event) => {
+            const resumeInfoBtn = event.target.closest('#resume-web-page .item-info-btn');
+            if (resumeInfoBtn) {
+                event.stopPropagation();
+                const infoId = resumeInfoBtn.dataset.infoId;
+                if (infoId) openSidebar(infoId);
+                return;
+            }
+            const galleryInfoBtn = event.target.closest('.gallery-page .item-info-btn');
+            if (galleryInfoBtn) {
+                event.stopPropagation();
+                const clipboardTargetId = galleryInfoBtn.dataset.clipboardTarget;
+                if (clipboardTargetId) openClipboardPanel(clipboardTargetId);
+                return;
+            }
+            if (event.target === closeSidebarBtn) {
+                closeSidebar();
+                return;
+            }
+            if (infoSidebar?.classList.contains('active') && !infoSidebar.contains(event.target) && !resumeInfoBtn) {
+                closeSidebar();
+            }
+            const activeClipboardPanel = document.querySelector('.clipboard-panel.visible');
+            if (activeClipboardPanel && !activeClipboardPanel.contains(event.target) && !galleryInfoBtn) {
+                 const isOpeningButton = event.target.closest('.gallery-page .item-info-btn[data-clipboard-target]');
+                 if (!isOpeningButton) {
+                    closeClipboardPanel();
+                 }
+            }
+        });
+
+        if(lastUpdatedElement) lastUpdatedElement.textContent = "Last updated: placeholder";
+        console.log("Portfolio Page Initialized (Revamp v6 - Highlights Module)");
+
+        highlightsModule.init();
+
+    });
+    </script>
+
+</body>
+</html>
