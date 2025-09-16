@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>Owen Whelan - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -86,7 +86,7 @@
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* Dark Theme Color Palette */
+        /* Dark Theme Color Palette (Master) */
         :root {
             --color-emphasis: #FFCC99; --color-accent-pale: #3a3a3a; --color-light-bg: #2c2c2c;
             --color-soft-gray-bg: #383838; --color-medium-gray-bg: #5e5e5e; --color-dark-gray-bg: #1e1e1e;
@@ -114,19 +114,19 @@
             min-height: 70px;
         }
         .header-left { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; overflow: hidden; flex-shrink: 1; min-width: 0; }
- .logo-container {
-    width: auto; /* Let the container size to its content */
-    height: 90px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-light-text);
-    letter-spacing: .5px;
-    padding: 0 10px; /* Adjust left/right padding */
-}
+        .logo-container {
+            width: auto; /* Let the container size to its content */
+            height: 90px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-light-text);
+            letter-spacing: .5px;
+            padding: 0 10px; /* Adjust left/right padding */
+        }
         .header-nav-buttons { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;}
 
         .nav-button {
@@ -180,7 +180,6 @@
             color: white;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
-
 
         .callout-background-wrapper {
             padding: 30px 40px; margin: 0;
@@ -479,11 +478,46 @@
         .footer-content { max-width: 800px; margin: 0 auto; text-align: left; margin-bottom: 30px; }
         .footer-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
         .footer-buttons a.button-style {
-            padding: 10px 22px; font-size: 1rem; width: 280px; min-width: 280px;
-            flex-direction: column; text-align: center; line-height: 1.3; gap: 2px;
-            color: var(--color-dark-text);
+            padding: 10px 22px;
+            font-size: 1rem;
+            width: 280px;
+            min-width: 280px;
+            flex-direction: column;
+            text-align: center;
+            line-height: 1.3;
+            gap: 2px;
         }
-        .footer-buttons .button-sub-label { font-size: 0.8em; font-style: italic; color: #553c20; font-weight: 400; }
+        .footer-buttons .button-main-label {
+            display: block;
+            font-weight: 600;
+        }
+        .footer-buttons .button-sub-label {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #553c20;
+            font-weight: 400;
+            display: block;
+        }
+        .footer-email-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer-email-container p {
+            margin-bottom: 8px;
+            color: var(--color-light-text);
+        }
+        .footer-email-text {
+            font-family: monospace;
+            background: var(--color-dark-gray-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--color-light-text);
+            margin-left: 5px;
+            border: 1px solid var(--color-medium-gray-bg);
+            user-select: all;
+        }
+
         .footer-placeholder-text { font-size: 0.9em; color: var(--color-medium-gray-bg); margin-top: 15px; }
         
         #changelog-button {
@@ -502,10 +536,13 @@
         .subpage { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-dark-gray-bg); color: var(--color-light-text); z-index: 1001; display: none; padding: 40px; overflow-y: auto; }
         .subpage .back-button {
             position: absolute; top: 25px; left: 30px;
-            background-color: var(--color-medium-gray-bg); color: var(--color-dark-text);
+            background-color: var(--color-emphasis);
+            color: var(--color-dark-text);
             padding: 8px 18px; font-size: 1rem; border-radius: 20px;
-            border: 2px solid var(--color-emphasis-darkest);
+            border: 2px solid var(--color-emphasis-darker);
             text-shadow: none; box-shadow: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
          .subpage .back-button:hover {
             background-color: var(--color-emphasis-darker);
@@ -515,7 +552,7 @@
         }
          .subpage .back-button:active { transform: scale(0.98); }
          .subpage h1.page-main-title { text-align: center; margin-top: 60px; margin-bottom: 15px; color: var(--color-light-text); }
-         .subpage .content { max-width: 800px; margin: 20px auto; }
+         .subpage .content { max-width: 900px; margin: 20px auto; }
          .subpage .content h2 { color: var(--color-light-text); margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid var(--color-medium-gray-bg); padding-bottom: 5px;}
          .subpage .content h2 i {
             margin-right: 12px;
@@ -527,12 +564,14 @@
             margin-top: 20px; margin-bottom: 5px;
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
          }
+         #about-page .content h3 {
+             border-bottom: 1px solid var(--color-medium-gray-bg);
+             padding-bottom: 5px;
+         }
          .subpage .content p { margin-bottom: 15px; margin-left: 0px; }
          .subpage .content ul { list-style: disc; margin-left: 25px; padding-left: 10px; margin-bottom: 15px; }
          .subpage .content ul ul { margin-top: 5px; margin-bottom: 5px; margin-left: 20px;}
          .subpage .content li { margin-bottom: 5px; }
-         #skills-page ul { list-style: square; margin-left: 40px; }
-         #skills-page li { margin-bottom: 10px; font-size: 1.1em;}
 
         .item-info-btn {
              padding: 1px 5px; font-size: 0.8em; line-height: 1;
@@ -553,17 +592,26 @@
              background-color: #e0e0e0;
              border-color: var(--color-dark-gray-bg);
          }
-        .personal-story-box {
-            background-color: var(--color-soft-gray-bg);
-            border-left: 5px solid var(--color-emphasis-darkest);
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 5px 5px 0;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        
+        #about-page .about-intro-box {
+            background: linear-gradient(135deg, var(--color-emphasis), var(--color-emphasis-darkest));
+            color: var(--color-dark-text);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 0 auto 35px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--color-emphasis-darker);
         }
-        .personal-story-box p { margin-left: 0; }
+        #about-page .about-intro-box p {
+             color: var(--color-dark-text);
+             text-shadow: 0 1px 1px rgba(255,255,255,0.2);
+             margin-bottom: 0;
+        }
 
-        #about-page, #skills-page, #projects-page, #extras-page, #resume-web-page, #changelog-page, #kernels-page { display: none; }
+        #about-page, #skills-page, #my-work-page, #resume-web-page, #changelog-page, #kernels-page { display: none; }
 
         #info-sidebar { position: fixed; top: 0; right: -350px; width: 320px; height: 100%; background-color: var(--color-light-bg); color: var(--color-light-text); box-shadow: -3px 0 10px rgba(0,0,0,0.3); z-index: 1500; transition: right 0.4s ease-in-out; padding: 20px; padding-top: 60px; overflow-y: auto; }
          #info-sidebar.active { right: 0; }
@@ -597,14 +645,6 @@
         .gallery-page .gallery-item .project-icon-container i {
             font-size: 3em;
         }
-        #extras-page .gallery-item .project-icon-container {
-            width: 80px;
-            height: 80px;
-        }
-        #extras-page .gallery-item .project-icon-container i {
-            font-size: 2.2em;
-        }
-
          .gallery-page .gallery-item h4 { font-size: 1.1em; margin-bottom: 8px; color: var(--color-light-text); }
          .gallery-page .gallery-item p.item-short-desc { font-size: 0.9em; color: var(--color-light-text); margin-left: 0; flex-grow: 1; margin-bottom: 10px; }
          .gallery-page .gallery-item .item-info-btn {
@@ -613,12 +653,8 @@
 
         .clipboard-panel {
             position: fixed;
-            bottom: calc(-1 * var(--clipboard-height) - 40px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 600px;
-            height: var(--clipboard-height);
+            bottom: -100%; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px; height: auto; max-height: 80vh;
             background-color: var(--color-accent-pale);
             color: var(--color-light-text);
             border-top-left-radius: 15px;
@@ -627,7 +663,7 @@
             z-index: 1600;
             transition: bottom 0.4s ease-in-out;
             padding: 20px;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
             overflow-y: auto;
         }
         .clipboard-panel.visible { bottom: 0; }
@@ -770,7 +806,7 @@
             }
 
 
-            .footer-buttons a.button-style { width: 90%; min-width: 200px; }
+            .footer-buttons a.button-style, .footer-buttons .footer-button-item { width: 90%; min-width: 200px; }
              #resume-section .section-content { flex-direction: column; align-items: center; }
              .resume-left-column { flex-basis: 100%; max-width: 400px; align-items: center;}
              .resume-section-buttons-container { align-items: center; width: 100%; max-width: 300px;}
@@ -781,6 +817,7 @@
                 min-height: var(--item-shelf-height);
             }
             .clipboard-panel { width: 95%; }
+            .gallery.grid-2-col { grid-template-columns: 1fr; }
         }
 
          @media (max-width: 780px) {
@@ -861,14 +898,221 @@
             .section-label-text { font-size: 1.2em; padding: 4px 20px 4px 10px; height: calc(var(--section-label-height) - 20px); }
 
         }
+        
+        .gallery-page.subpage .content h2 {
+            color: var(--color-light-text); margin-top: 40px; margin-bottom: 20px; 
+            border-bottom: 2px solid var(--color-emphasis-darkest); padding-bottom: 8px;
+            font-size: 1.8em; text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        .gallery-page.subpage .content h2 i {
+            margin-right: 15px;
+        }
+        .gallery-page.subpage .content h2:first-of-type {
+            margin-top: 10px;
+        }
 
+        /* --- Styles from new Skills Page (tester.html) --- */
+        #skills-page .gallery {
+            align-items: stretch; /* Makes cards in a row equal height */
+        }
+        #skills-page .gallery-item {
+            text-align: center;
+        }
+        #skills-page .gallery-item h4 {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--color-light-text);
+        }
+        #skills-page .soft-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #skills-page .soft-item {
+            background: var(--color-dark-gray-bg);
+            border: 1px solid var(--color-medium-gray-bg);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: transform .12s ease, background .15s ease, color .15s ease;
+        }
+        #skills-page .soft-item:hover {
+            transform: scale(1.02);
+        }
+        #skills-page .soft-item.highlighted {
+            background: var(--color-emphasis);
+            color: var(--color-dark-text);
+            border-color: var(--color-emphasis-darker);
+            transform: scale(1.02);
+        }
+        #skills-page #focus-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center placeholder text */
+            align-items: center;
+            transition: all 0.2s ease;
+            background-color: var(--color-dark-gray-bg); /* Darker background by default */
+        }
+        #skills-page #focus-card.active {
+            justify-content: flex-start; /* Align active content to top */
+            border-color: var(--color-emphasis);
+            background-color: var(--color-soft-gray-bg); /* Match other cards when active */
+        }
+        #skills-page #focus-card.active #focus-text {
+            margin-top: 10px;
+        }
+        #skills-page #focus-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        #skills-page .checklist {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            margin-top: 15px;
+        }
+        #skills-page .checklist li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        #skills-page .checklist li::before {
+            content:"\2713";
+            position:absolute;
+            left:0;
+            top: 4px;
+            color: var(--color-emphasis);
+            font-weight: 700;
+        }
+        #skills-page .checklist .label {
+            font-weight: 700;
+        }
+        #skills-page .pill {
+            display: inline-block;
+            background: var(--color-emphasis);
+            color: var(--color-dark-text);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: .8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        #skills-page .subtle-text {
+            font-size: 0.9em;
+            color: var(--color-light-text);
+            padding-top: 15px;
+        }
+        #skills-page #focus-card .subtle-text {
+            margin-top: 0; /* remove auto margin */
+        }
+        #skills-page .leadership-card h4,
+        #skills-page .leadership-card p {
+            text-align: left;
+        }
+       
+        .gallery.grid-2-col {
+            grid-template-columns: 1fr 1fr;
+        }
+        .gallery-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* --- Styles from new My Work Page (projectspagenew.html) --- */
+        #my-work-page .gallery-page .gallery-item .item-info-btn {
+            position: absolute; top: 10px; right: 10px; padding: 1px 5px; font-size: 0.8em;
+            line-height: 1; border-radius: 50%;
+            width: 22px; height: 22px; background-color: var(--color-emphasis); color: var(--color-dark-text);
+            border: 1px solid var(--color-emphasis-darker);
+            cursor: pointer; display: inline-flex; justify-content: center; align-items: center;
+            transition: all 0.2s ease;
+        }
+        #my-work-page .gallery-page .gallery-item .item-info-btn:hover { background-color: var(--color-emphasis-darker); transform: scale(1.1); }
+        #my-work-page .gallery-page .gallery-item .item-info-btn i { font-size: 0.9em; color: var(--color-dark-text); }
+        #my-work-page .gallery-item-year {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--color-emphasis);
+            color: var(--color-dark-text);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+        #my-work-page .sort-switch-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+        }
+        #my-work-page .sort-switch-label {
+            font-weight: 600;
+            color: var(--color-light-text);
+        }
+        #my-work-page .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        #my-work-page .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        #my-work-page .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-medium-gray-bg);
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        #my-work-page .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        #my-work-page input:checked + .slider {
+            background-color: var(--color-emphasis-darkest);
+        }
+        #my-work-page input:focus + .slider {
+            box-shadow: 0 0 1px var(--color-emphasis-darkest);
+        }
+        #my-work-page input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
     </style>
 </head>
 <body>
     <div class="main-wrapper">
         <header>
             <div class="header-left">
-<div class="logo-container">Owen Whelan</div>
+                <div class="logo-container">Owen Whelan</div>
                 <div class="header-nav-buttons">
                      <button class="nav-button" id="nav-about" title="About Me">
                         <i class="fa-solid fa-user-astronaut"></i>
@@ -878,13 +1122,9 @@
                          <i class="fa-solid fa-atom"></i>
                          <span class="nav-button-label">Skills</span>
                      </button>
-                     <button class="nav-button" id="nav-projects" title="Projects">
+                     <button class="nav-button" id="nav-my-work" title="My Work">
                          <i class="fa-solid fa-rocket"></i>
-                         <span class="nav-button-label">Projects</span>
-                     </button>
-                     <button class="nav-button" id="nav-extras" title="Extras">
-                         <i class="fa-solid fa-photo-film"></i>
-                         <span class="nav-button-label">Extras</span>
+                         <span class="nav-button-label">My Work</span>
                      </button>
                      <button class="nav-button" id="nav-resume-web" title="Résumé (Web)">
                          <i class="fa-solid fa-file-lines"></i>
@@ -905,7 +1145,7 @@
         </header>
 
         <div class="callout-background-wrapper">
-            <div class="callout">From New York, I’m participating in the communities I find myself in by utilizing my dedicated interests and advanced skills in technology, language, and the world.</div>
+            <div class="callout">I'm a motivated, dedicated individual who uses modern technology to  research what's new in education and understand the world of language and communication a bit better, for myself and for others.</div>
         </div>
 
         <main>
@@ -917,9 +1157,8 @@
                  <div class="section-content">
                    <div class="resume-left-column">
                        <div class="pdf-embed-placeholder">
-                           <iframe src="OwenWhelan_Resume.pdf" title="Embedded Résumé PDF" type="application/pdf">
-                               Your browser does not support embedded PDFs. You can
-                               <a href="OwenWhelan_Resume.pdf">download it here</a>.
+                           <iframe src="Resumé (8).pdf" title="Embedded Résumé PDF" type="application/pdf">
+                               That's weird, the website couldn't pick up on the PDF. You can still check out the Résumé section on the site.
                            </iframe>
                        </div>
                    </div>
@@ -946,7 +1185,7 @@
                  <div class="section-content">
                      <div class="highlights-column-container">
                         <div class="highlights-controls-wrapper">
-                            <p class="highlights-placeholder-text">Click an item below or drag it onto the canvas to view project details, articles, or skill summaries.</p>
+                            <p class="highlights-placeholder-text">Click an item below or drag it into the canvas...</p>
                             <div class="highlights-filter-area">
                                  <span class="highlights-filter-label">Filter:</span>
                                  <div class="highlights-filters">
@@ -960,6 +1199,7 @@
                          <div class="item-shelf-wrapper">
                             <button class="shelf-arrow prev-arrow" id="shelf-prev-arrow" aria-label="Previous items"><i class="fas fa-chevron-left"></i></button>
                             <div id="item-shelf">
+                             <div class="info-box" draggable="true" id="box-smile-learn" data-content-id="content-smile-learn" data-category="ai-research teaching-mentorship" title="Smile and Learn Intern"><span class="icon">🦭</span><span class="title">S&L Intern</span></div>
                              <div class="info-box" draggable="true" id="box-instructional-tech-intern" data-content-id="content-instructional-tech-intern" data-category="ai-research teaching-mentorship" title="Instructional Technology Intern"><span class="icon">💡</span><span class="title">IT Intern</span></div>
                              <div class="info-box" draggable="true" id="box-ai-research-combo" data-content-id="content-ai-research-combo" data-category="ai-research" title="AI Research (INTED/CURSCA)"><span class="icon">🔬</span><span class="title">AI Research</span></div>
                              <div class="info-box" draggable="true" id="box-ai-summit" data-content-id="content-ai-summit" data-category="ai-research" title="AI Summit"><span class="icon">⛰️</span><span class="title">AI Summit</span></div>
@@ -997,166 +1237,183 @@
                       <span class="button-sub-label">University-related inquiries</span>
                  </a>
                  <a href="mailto:owenw2023@gmail.com" class="button-style" id="footer-personal-email">
-                       <span class="button-main-label">Personal Email</span>
-                       <span class="button-sub-label">General comments or information</span>
+                       <span class="button-main-label">General Email</span>
+                       <span class="button-sub-label">Comments, questions or information</span>
                  </a>
             </div>
+            <div class="footer-email-container">
+                <p>Academic: <span class="footer-email-text">owen.whelan1@marist.edu</span></p>
+                <p>General: <span class="footer-email-text">owenw2023@gmail.com</span></p>
+            </div>
             <button id="changelog-button" class="button-style">View Website Changelog</button>
-            <p class="footer-placeholder-text" id="last-updated">Last updated in June 2025.</p>
+            <p class="footer-placeholder-text" id="last-updated">Last updated in September 2025.</p>
             <p class="footer-credit">This site was coded with AI and augmented with my knowledge of HTML and graphic design.</p>
         </footer>
     </div>
 
     <div id="about-page" class="subpage">
-        <button class="back-button" id="about-back-button">&larr; Back</button>
+        <button class="back-button">&larr; Back</button>
         <h1 class="page-main-title">About Me</h1>
+        <p class="page-top-editable-text">A little bit about my values and interests.</p>
         <div class="content">
-            <div class="personal-story-box">
+            <div class="about-intro-box">
                 <p>From New York, I’m participating in the communities I find myself in by utilizing my dedicated interests and advanced skills in technology, language, and the world.</p>
             </div>
-            <h3>My Values</h3>
-            <p><strong>Technology:</strong> I find technology to be an important and constant thing in my life. As someone from Gen Z, I’ve seen it evolve rapidly. I am excited to learn about new technologies and believe strongly in studying them, learning more about them, and experimenting with them.</p>
-            <p><strong>Education:</strong> I believe that education is a lifelong journey that extends far beyond the classroom model. It's not just about memorizing facts, but about developing critical thinking skills and expanding one's worldview. Learning should be engaging and meaningful, connecting theoretical knowledge with practical applications. I value both formal education and self-directed learning, as they each offer unique perspectives and opportunities for growth.</p>
-            <p><strong>Language:</strong> I’m studying Spanish because I really like it, but I also believe strongly in language. Learning another language can take several forms, like Spanish, artwork, or coding, and I think that all of them change the way you think and make you a better person. I believe strongly in the power of the written, spoken, and artistic word and am excited to see it thrive in future years.</p>
-            <p>The things I work on and do are the things I believe in.</p>
-            <h3>Fun & Games</h3>
-            <p>In my free time, I draw, play games, and write. I’m active on Instagram and LinkedIn and enjoy talking with people and learning about their backgrounds.</p>
-            <p>I like birds (ducks are a strong favorite) and my favorite color is orange. My go-to fun fact is that I have an identical twin brother.</p>
+            <h3>What’s up with you?</h3>
+            <p>The education and technology spheres have defined a good part of my life. I pride myself in using technology daily to its full capacity to get things done, not only efficiently but in new ways that challenge the past. I’m dedicating my studies and work to their intersection, while grounding it in my interest and passion for language. I do it because I believe in it!</p>
+            <h3>So why education?</h3>
+            <p>Why *not* education? Seriously: across cultures and people, almost everyone goes through some kind of education, whether it’s formal school or not. The systems I went through as a student changed who I am a lot, and I have a lot of ideas on what I think the future of education should look like. I also have a genuine motivation to see people improve and am passionate to explain and talk about things I make. Creating resources for other people to reference and talking about it to a group is a natural strong suit for me.</p>
+            <h3>So why Spanish?</h3>
+            <p>Spanish is a critical skill in today’s world, especially if you live in the United States. I’ve found that my Spanish skills — built from the ground up in my public New York school — have been so useful in daily interactions and professional settings. I think everyone should know at least some. Not to mention it’s an elegant, strong language, and learning it has changed a lot about how I view the world. You also pick up cultural competency and expand your worldview — neat!</p>
+            <p>I also work a lot with English, too; I believe a lot in the voice of the student and the educator, shown through my journalism work. My writing style is persuasive, succinct, and (proudly) mine.</p>
+            <h3>Do you just AI everything?</h3>
+            <p>Noooooooo. I never *need* to use it, and consider myself lucky to have built super important skills — writing, organizing, prioritizing — on my own without it as I wen through school. I don’t ever publish written text, like this paragraph you’re reading, without at least mentioning it was AI generated — that’s just not right! Further, I can’t really give you my voice if it’s through a prompt and ChatGPT.</p>
+            <p>I’m open for contact if you’d like to ask me more about where and how I use AI and where I see it going. For the record, I do have a disclaimer in the footer of this site that the *code* was AI generated, but the voice is all me.</p>
+            <h3>For fun...</h3>
+            <p>I draw (honing those graphic design skills!), write, and play games online with friends. I’ve learned a lot from communicating both in person and online. My favorite color is orange (obviously) and I’m infamous among my friends for liking ducks. My go-to fun fact is that I have an identical twin brother.</p>
             </div>
     </div>
 
-    <div id="skills-page" class="subpage">
-        <button class="back-button" id="skills-back-button">&larr; Back</button>
+    <div id="skills-page" class="subpage gallery-page">
+        <button class="back-button">&larr; Back</button>
         <h1 class="page-main-title">My Skills</h1>
-        <p class="page-top-editable-text">A dynamic and evolving skillset tailored for modern educational challenges.</p>
+        <p class="page-top-editable-text">A showcase of my technical, communicative, and leadership abilities.</p>
         <div class="content">
-            <h2><i class="fas fa-tools"></i>Software & Tools</h2>
-            <ul>
-                <li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook, Teams)</li>
-                <li>Google Workspace (Docs, Sheets, Slides, Drive)
-                    <ul><li>Knowledge of advanced formatting, include graphic design layouts and formatting for accessibility</li></ul>
-                </li>
-                <li>Video Editing (Sony Vegas Movie Studio)</li>
-                <li>Graphic Design (Canva, Adobe Suite)
-                    <ul><li>Creation of resources that are visually striking and effective for analogies and teaching applications</li></ul>
-                </li>
-                <li>D2L Brightspace, a Learning Management System (LMS) </li>
-            </ul>
-            <h2><i class="fas fa-language"></i>Languages</h2>
-            <ul><li>English (Native)</li><li>Spanish (Advanced Proficiency - NYS Seal of Biliteracy)</li></ul>
-            <h2><i class="fas fa-users-cog"></i>Professional Skills</h2>
-            <ul>
-                <li>Research and analysis</li>
-                <li>Technical and creative writing editing</li>
-                <li>Public speaking and presentation design</li>
-                <li>Curriculum and instructional design</li>
-                <li>Teaching, tutoring, and mentorship</li>
-                <li>Leadership and team collaboration</li>
-                <li>Problem-solving and critical thinking</li>
-            </ul>
+            <h2><i class="fa-solid fa-screwdriver-wrench"></i> Software & Technology</h2>
+            <p class="page-top-editable-text" style="margin-bottom: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere, lorem nec tempor maximus.</p>
+            <div class="gallery grid-2-col" style="align-items: stretch;">
+                <div class="gallery-item" id="soft-list-card">
+                    <h4>Software</h4>
+                    <div class="soft-list" id="soft-list">
+                        <div class="soft-item" data-title="Microsoft Office" data-desc="Word, Excel, and PowerPoint for documents, data, and presentations.">Microsoft Office (Word · Excel · PowerPoint)</div>
+                        <div class="soft-item" data-title="Google Workspace" data-desc="Docs, Sheets, Slides, and Drive for collaborative workflows.">Google Workspace (Docs · Sheets · Slides · Drive)</div>
+                        <div class="soft-item" data-title="Video Editing" data-desc="Vegas Movie Studio for educational video production.">Video Editing (Vegas Movie Studio)</div>
+                        <div class="soft-item" data-title="Graphic Design" data-desc="Canva/Adobe for quick layouts, graphics, and visual polish.">Graphic Design (Canva · Adobe)</div>
+                        <div class="soft-item" data-title="LMS" data-desc="D2L Brightspace: organizing materials, modules, and assessments.">LMS (D2L Brightspace)</div>
+                        <div class="soft-item" data-title="Gen AI" data-desc="ChatGPT, Gemini, and Hugging Face models for ideation and language tasks.">Gen AI (ChatGPT · Gemini · Hugging Face)</div>
+                    </div>
+                </div>
+                <div class="gallery-item" id="focus-card">
+                    <div id="focus-title" style="display: none;"></div>
+                    <p class="subtle-text" id="focus-text">Hover or tap a software from the list to preview details here.</p>
+                </div>
+            </div>
+
+            <h2><i class="fa-solid fa-comments"></i> Communication Skills</h2>
+            <div class="gallery grid-2-col">
+                <div class="gallery-item">
+                    <h4>English</h4>
+                    <ul class="checklist">
+                        <li><span class="label">Academic Writing</span> <span class="pill">INTED</span> <span class="pill">CURSCA</span></li>
+                        <li><span class="label">Interviewing &amp; Coordination</span> <span class="pill">Digital Ed Intern</span></li>
+                        <li><span class="label">Fast &amp; clear communication</span> <span class="pill">University Work</span></li>
+                        <li><span class="label">Journalism writing</span> <span class="pill">Marist Circle</span></li>
+                    </ul>
+                    <p class="subtle-text">Clear prose, editing for structure, and audience‑aware tone across academic, journalistic, and instructional contexts.</p>
+                </div>
+                <div class="gallery-item">
+                    <h4>Spanish</h4>
+                    <ul class="checklist">
+                        <li><span class="label">Time abroad: interpersonal communication</span> <span class="pill">Abroad</span></li>
+                        <li><span class="label">Experience tutoring and teaching</span> <span class="pill">Tutoring</span></li>
+                        <li><span class="label">Self‑directed tools for learning</span> <span class="pill">ALOUD</span></li>
+                    </ul>
+                    <p class="subtle-text">Practical Spanish experience through study abroad and tutoring; emphasis on clear, respectful interaction.</p>
+                </div>
+                <div class="gallery-item full-width">
+                     <h4>Communicative Basics</h4>
+                     <p>My time abroad, in the classroom, and working with people from a variety of backgrounds has given me the ability to communicate appropriately and respond responsibly in a variety of contexts.</p>
+                     <div class="pill-container">
+                        <span class="pill">BOCES TA</span>
+                        <span class="pill">Marist Circle</span>
+                        <span class="pill">Abroad</span>
+                        <span class="pill">University Work</span>
+                     </div>
+                </div>
+            </div>
+
+            <h2><i class="fa-solid fa-compass"></i> Leadership & Mindset</h2>
+            <div class="gallery grid-2-col">
+                 <div class="gallery-item leadership-card">
+                    <h4><i class="fa-solid fa-user-tie"></i>&nbsp; Leader</h4>
+                    <p>I have experience leading teams and individuals to success, whether it's through my work at the newspaper or my experience tutoring students. I'm comfortable taking initiative and helping to define the tone or meaning of a group or project.</p>
+                 </div>
+                 <div class="gallery-item leadership-card">
+                    <h4><i class="fa-solid fa-flask"></i>&nbsp; Experimentation</h4>
+                    <p>Trying new things is a part of my natural style of development. I look forward to using new tools, adapt quickly, and enjoy the process of creating things that stand out as innovative.</p>
+                 </div>
+            </div>
+            <p class="page-top-editable-text" style="margin: 20px 0;">My mindset as a leader, learner, and team member all follow the principles of being involved and making myself heard while also giving others a voice and seeing things from a variety of lenses.</p>
+            <div class="gallery">
+                 <div class="gallery-item leadership-card full-width" style="background: linear-gradient(180deg, rgba(255,204,153,.12), rgba(255,204,153,.05)); border-color: var(--color-emphasis);">
+                    <h4><i class="fa-solid fa-pencil"></i>&nbsp; DIY</h4>
+                    <p>I'm happy to explain when I think something would work better for me by using a different format, tool, or style. I'm happy to work with people and match their workflows, but I'm also able to tailor things to my needs while explaining why and documenting how along the way.</p>
+                 </div>
+            </div>
         </div>
     </div>
     
     <div id="kernels-page" class="subpage">
-        <button class="back-button" id="kernels-back-button">&larr; Back</button>
+        <button class="back-button">&larr; Back</button>
         <h1 class="page-main-title">Kernels</h1>
+        <p class="page-top-editable-text">Coming soon!</p>
         <div class="content">
-            <p style="text-align: center; font-size: 1.2em;">Coming soon!</p>
+            <p style="text-align: center; font-size: 1.2em;">I'll put my blog here... eventually.</p>
         </div>
     </div>
 
-    <div id="projects-page" class="subpage gallery-page">
-        <button class="back-button" id="projects-back-button">&larr; Back</button>
-        <h1 class="page-main-title">Projects</h1>
-        <p class="page-top-editable-text">A collection of projects demonstrating practical application of skills.</p>
-        <div class="content">
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="project-icon-container"><i class="fas fa-file-alt"></i></div>
-                    <h4>AI, Note-Taking, and the Student Experience (INTED 2025)</h4>
-                    <p class="item-short-desc">Published and presented research analyzing the AI landscape and its impact on student note-taking, proposing the GAIN framework.</p>
-                    <button class="item-info-btn" data-clipboard-target="clipboard-project-inted" title="More Info"><i class="fas fa-circle-info"></i></button>
-                </div>
-                <div class="gallery-item">
-                    <div class="project-icon-container"><i class="fas fa-gamepad"></i></div>
-                    <h4>ALOUD Language Learning Game (ALOUD 2025)</h4>
-                    <p class="item-short-desc">Created and presented an interactive language-learning video game to grade-school teachers at the ALOUD conference.</p>
-                    <button class="item-info-btn" data-clipboard-target="clipboard-project-aloud" title="More Info"><i class="fas fa-circle-info"></i></button>
-                </div>
-                 <div class="gallery-item">
-                    <div class="project-icon-container"><i class="fas fa-cogs"></i></div>
-                    <h4>Marist+AI Academic Working Group</h4>
-                    <p class="item-short-desc">Student representative in the Marist+AI working group, guiding AI integration and policy at the university.</p>
-                    <button class="item-info-btn" data-clipboard-target="clipboard-project-marist-ai" title="More Info"><i class="fas fa-circle-info"></i></button>
-                </div>
-                <div class="gallery-item">
-                    <div class="project-icon-container"><i class="fas fa-newspaper"></i></div>
-                    <h4>The Marist Circle - Editorial & Writing</h4>
-                    <p class="item-short-desc">Editor and writer for my school's newspaper.<a href="https://www.maristcircle.com/search?q=owen+whelan" target="_blank" rel="noopener noreferrer" class="inline-text-link">View my work here.</a> </p>
-                    <button class="item-info-btn" data-clipboard-target="clipboard-extra-marist-circle" title="More Info"><i class="fas fa-circle-info"></i></button>
-                </div>
+    <div id="my-work-page" class="subpage gallery-page">
+        <button class="back-button">&larr; Back to Main</button>
+        <h1 class="page-main-title">My Work</h1>
+        <p class="page-top-editable-text">A collection of projects, awards, and publications.</p>
+        
+        <div class="sort-switch-container">
+            <span class="sort-switch-label" id="sort-label-category">Sort by Category</span>
+            <label class="switch">
+                <input type="checkbox" id="sort-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="sort-switch-label" id="sort-label-year">Sort by Year</span>
+        </div>
+
+        <div class="content" id="gallery-content">
+            <!-- This container will hold the sorted items -->
+            <div id="sorted-gallery-container"></div>
+
+            <!-- This container holds the default, categorized view -->
+            <div id="category-gallery-container">
+                <section id="projects-section">
+                    <h2><i class="fa-solid fa-rocket"></i> Projects</h2>
+                    <div class="gallery" id="projects-gallery">
+                        <!-- Project items will be injected here by JS -->
+                    </div>
+                </section>
+                <section id="extras-section">
+                    <h2><i class="fa-solid fa-photo-film"></i> Extras</h2>
+                    <div class="gallery" id="extras-gallery">
+                        <!-- Extras items will be injected here by JS -->
+                    </div>
+                </section>
             </div>
         </div>
     </div>
-    <div class="hidden-content-source" id="clipboard-project-inted"><h4>Research Paper on AI, Note-Taking, and the Student Experience (INTED 2025)</h4><p>I worked closely with two professors and a fellow student to create a research paper that analyzed the AI landscape and how it shapes student note-taking. My presentation went over the tools that existed, but also mentioned how educators and students can evaluate and be aware of these tools. The details on its publishing are available <a href="https://library.iated.org/view/WHELAN2025OPT?re=downloadnotallowed" target="_blank" rel="noopener noreferrer">here</a>, including the abstract.</div>
-    <div class="hidden-content-source" id="clipboard-project-aloud"><h4>ALOUD Language Learning Game (ALOUD 2025) Details</h4><p>I made a game titled <i>Partybusters!</i> (in Spanish, <i>¡Guardafiesta!</i>) in which players manage a birthday party. They admit "partygoers" by reading a list of ever-more complicated rules. The game's focus is on language aquisition as a game for reviewing vocabulary and grammar concepts. It's infinitely expandable using AI. I demoed the game to teachers at Marist Univeristy's ALOUD conference in 2025.</p><p><a href="https://mari.st/pb-main-menu" target="_blank" rel="noopener noreferrer" class="play-game-link">Play the game here</a></p> </div>
-    <div class="hidden-content-source" id="clipboard-project-marist-ai"><h4>Marist+AI Academic Working Group Details</h4><p>As one of the two student representatives in the Marist + AI working group, I helped faculty and students learn more about AI technology as well as guide them to use it effectively, with an ultimate goal of achieving a community at Marist that integrates AI in a responsible, useful way. I collaborated with faculty to develop an AI framework at Marist and created, edited, and commented on multiple pieces of documentation and framework material.</p></div>
-    <div class="hidden-content-source" id="clipboard-extra-marist-circle"> <h4>Journalistic Skills & Marist Circle Contributions</h4>
-        <p>This is the newspaper club at Marist University. You can view my work <a href="https://www.maristcircle.com/search?q=owen+whelan" target="_blank" rel="noopener noreferrer" class="inline-text-link">here</a>. </p>
-        <p>All of my articles are on topics that I found interesting, or just general happenings on campus. I pride myself in variety and quality writing. I published as much as two articles an issue while still keeping interesting topics at the center. As an editor, I took great care in not only polishing work of my fellow writers but mentoring others and ensuring long-term change and improvement.</p>
-    </div>
 
-
-    <div id="extras-page" class="subpage gallery-page">
-        <button class="back-button" id="extras-back-button">&larr; Back</button>
-        <h1 class="page-main-title">Extras</h1>
-        <p class="page-top-editable-text">A collection of awards, publications, and other notable involvements.</p>
-        <div class="content">
-            <div class="gallery">
-                 <div class="gallery-item">
-                     <div class="project-icon-container extras-icon-visual"><i class="fas fa-award"></i></div>
-                    <h4>Sigma Delta Pi (ΣΔΠ)</h4>
-                    <p class="item-short-desc">Inducted into the National Collegiate Hispanic Honor Society for dedication to Spanish language and culture.</p>
-                    <button class="item-info-btn" data-clipboard-target="clipboard-extra-sigma-delta-pi" title="More Info"><i class="fas fa-circle-info"></i></button>
-                </div>
-                <div class="gallery-item">
-                    <div class="project-icon-container extras-icon-visual"><i class="fas fa-star"></i></div>
-                   <h4>Marist University Dean's List</h4>
-                   <p class="item-short-desc">Recognized for academic excellence, receiving Dean's List honors multiple times.</p>
-                   <button class="item-info-btn" data-clipboard-target="clipboard-extra-deans-list" title="More Info"><i class="fas fa-circle-info"></i></button>
-               </div>
-               <div class="gallery-item">
-                    <div class="project-icon-container extras-icon-visual"><i class="fas fa-certificate"></i></div>
-                   <h4>NYS Seal of Biliteracy (Spanish)</h4>
-                   <p class="item-short-desc">Awarded for demonstrated proficiency in Spanish (speaking, listening, reading, writing).</p>
-                   <button class="item-info-btn" data-clipboard-target="clipboard-extra-seal-biliteracy" title="More Info"><i class="fas fa-circle-info"></i></button>
-               </div>
-               <div class="gallery-item">
-                    <div class="project-icon-container extras-icon-visual"><i class="fas fa-shield-alt"></i></div>
-                   <h4>National Honor Society</h4>
-                   <p class="item-short-desc">Inducted for dedication to academics and service in high school.</p>
-                   <button class="item-info-btn" data-clipboard-target="clipboard-extra-nhs" title="More Info"><i class="fas fa-circle-info"></i></button>
-               </div>
-                <div class="gallery-item">
-                     <div class="project-icon-container extras-icon-visual"><i class="fas fa-feather-alt"></i></div>
-                    <h4>Marist Mosaic - Published Poem</h4>
-                    <p class="item-short-desc">Poetry published in the Marist University literary arts journal. </p>
-                    <button class="item-info-btn" data-clipboard-target="clipboard-extra-mosaic" title="More Info"><i class="fas fa-circle-info"></i></button>
-                </div>
-                </div>
-        </div>
-    </div>
-    <div class="hidden-content-source" id="clipboard-extra-sigma-delta-pi"><h4>Sigma Delta Pi (ΣΔΠ) - National Collegiate Hispanic Honor Society</h4><p>Inducted October 2024. This is the National Honors Society for Spanish on the college level. I also received it in high school. Being a member of ΣΔΠ shows a dedication to values that make up a good student as well as someone who is knowledgeable of Spanish and Spanish-speaking cultures.</p></div>
-    <div class="hidden-content-source" id="clipboard-extra-deans-list"><h4>Marist University Dean's List Details</h4><p>Currently on a perfect streak! I received the Dean’s List from Marist University in both the 2023-24 and 2024-25 years, representing my dedication to academics.</p></div>
-    <div class="hidden-content-source" id="clipboard-extra-seal-biliteracy"><h4>New York State Seal of Biliteracy (Spanish) Details</h4><p>Completed May 2022, awarded June 2023. Through Nanuet Senior High School, I completed the requirements for the New York State Seal of Biliteracy in 2022 and was awarded it upon my graduation in 2023. It demonstrates my proficiency in Spanish through speaking, listening, reading, and writing. My focus for the project was on technology and how it affects language and translation as a whole. When doing my project, my theme was on computer-assisted use of different languages with technologies like Google Lens and Google Translate. </p></div>
-    <div class="hidden-content-source" id="clipboard-extra-nhs"><h4>National Honor Society Details</h4><p>Inducted 2022. Encompassing my dedication to academics and service in high school, I became a member of the National Honors Society in 2022. You can learn about the National Honors Society from <a href="#" target="_blank" rel="noopener noreferrer">their website</a>. </p></div>
-    <div class="hidden-content-source" id="clipboard-extra-mosaic"><h4>Marist Mosaic Poem Details</h4><p>I got published in Marist Univeristy's <i>Mosaic</i> magazine in 2025. My poem is featured <a href="https://issuu.com/maristmosaic/docs/mosaic_spring_2025" target"_blank" rel="noopener noreferrer">here</a>.</p></div>
-    
     <div id="changelog-page" class="subpage">
-        <button class="back-button" id="changelog-back-button">&larr; Back</button>
+        <button class="back-button">&larr; Back</button>
         <h1 class="page-main-title">Website Changelog</h1>
         <p class="page-top-editable-text">Recent updates and improvements to the portfolio site.</p>
         <div class="content">
+            <div class="changelog-entry">
+                <h3>Content & Layout Overhaul</h3>
+                <span class="changelog-date">September 17, 2025</span>
+                <ul>
+                    <li>Updated a lot of outdated information.</li>
+                    <li>Added a lot of new details about myself.</li>
+                    <li>Merged two pages for ease of access.</li>
+                    <li>Made the About Me page more specific (and interesting to read).</li>
+                    <li>Some general graphic design housekeeping.</li>
+                </ul>
+            </div>
             <div class="changelog-entry">
                 <h3>Visual Overhaul & New Features</h3>
                 <span class="changelog-date">June 22, 2025</span>
@@ -1177,38 +1434,36 @@
     </div>
 
     <div id="resume-web-page" class="subpage">
-        <button class="back-button" id="resume-web-back-button">← Back</button>
+        <button class="back-button">← Back</button>
         <h1 class="page-main-title">Résumé</h1>
+        <p class="page-top-editable-text">A detailed overview of my professional and academic experience.</p>
         <div class="content">
             <div class="resume-contact-header">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:owenw2023@gmail.com">owenw2023@gmail.com</a> (Personal)</p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:owen.whelan1@marist.edu">owen.whelan1@marist.edu</a> (Academic)</p>
-                <p><i class="fas fa-globe"></i> <a href="http://owenwhelan.com" target="_blank" rel="noopener noreferrer">owenwhelan.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:owenw2023@gmail.com">owenw2023@gmail.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:owen.whelan1@marist.edu">owen.whelan1@marist.edu</a></p>
             </div>
 
             <h2>Summary</h2>
-            <p>Motivated honors student in adolescent Spanish education and applied AI, experienced in tutoring, teaching assistance, research, and editorial work. Proficient in AI, language, writing, and collaboration; passionate about education, technology, and communication.</p>
+            <p>Motivated honors student working in the fields of Spanish, generative artificial intelligence, and education. Seeking roles in language learning, educational technology, and using generative AI resources for students and educators.</p>
 
             <h2>Work Experience</h2>
+             <div class="resume-item">
+                <h3><span class="item-title-text">Smile & Learn Internship (Part Time, Fall 2025)</span><!-- Info button removed for now, will be added back later --></h3>
+                <p class="resume-item-location-subtext">MADRID, SPAIN</p>
+                <p>Reviewed and learned AINARA platform, created and understood AI resources meant for language learning. Currently working in this position — check back soon for more details.</p>
+            </div>
             <div class="resume-item">
-                <h3><span class="item-title-text">Instructional Technology Intern (Full Time, 2025 & ongoing)</span><button class="item-info-btn" data-info-id="resume-info-it-intern" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <h3><span class="item-title-text">Instructional Technology Intern (Full Time, Summer 2025)</span><button class="item-info-btn" data-info-id="resume-info-it-intern" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
-                <p>Created resources for faculty and students to understand artificial intelligence and its impact.</p>
+                <ul>
+                    <li>Created resources for faculty and students to understand artificial intelligence and responsible, efficient use.</li>
+                    <li>Contacted, coordinated, interviewed, and edited video of 8 faculty members about their use of generative AI.</li>
+                </ul>
             </div>
             <div class="resume-item">
                 <h3><span class="item-title-text">Rockland BOCES Substitute Teaching Assistant (Contract, 2025 & ongoing)</span><button class="item-info-btn" data-info-id="resume-info-boces-ta" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">CLARKSTOWN, NEW YORK</p>
                 <p>Assisted full-time teachers in instructing neurodivergent students during full, 7-hour instructional days.</p>
-            </div>
-            <div class="resume-item">
-                <h3><span class="item-title-text">Tutoring (Freelance, 2025)</span><button class="item-info-btn" data-info-id="resume-info-tutoring" title="More info"><i class="fas fa-circle-info"></i></button></h3>
-                <p class="resume-item-location-subtext">VIRTUAL</p>
-                <p>Tutored high school students in Spanish and science, seeing grade improvements by up to 30 percentile points.</p>
-            </div>
-            <div class="resume-item">
-                <h3><span class="item-title-text">Clarkstown Pools Cashier (Seasonal, 2021-2024)</span><button class="item-info-btn" data-info-id="resume-info-pools-cashier" title="More info"><i class="fas fa-circle-info"></i></button></h3>
-                <p class="resume-item-location-subtext">CLARKSTOWN, NEW YORK</p>
-                <p>Handled cash, assisted patrons (as much as 500+ per day), and collaborated with staff.</p>
             </div>
 
             <h2>Educational Experience</h2>
@@ -1216,77 +1471,92 @@
                 <h3><span class="item-title-text">Marist University, Honors Student (2023 - Present)</span><button class="item-info-btn" data-info-id="resume-info-marist-edu" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
                 <ul>
-                    <li>Majoring in adolescent education in Spanish with a GPA of 3.9+</li>
+                    <li>Majoring in adolescent education in Spanish with a GPA of 3.9</li>
                     <li>Minoring in applied artificial intelligence and pursuing a Technology & Society pathway</li>
                     <li>Anticipated graduation in 2027, anticipated graduate degree in 2028</li>
                 </ul>
+            </div>
+             <div class="resume-item">
+                <h3><span class="item-title-text">Universidad Carlos III de Madrid (Fall 2025)</span><button class="item-info-btn" data-info-id="resume-info-uc3m" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+                <p class="resume-item-location-subtext">MADRID, SPAIN</p>
+                <p>Studying abroad opportunity living with host family, studying in Spanish-only classes.</p>
             </div>
 
             <h2>Research & Experience</h2>
             <div class="resume-item">
                 <h3><span class="item-title-text">Publication for International Technology, Education and Development (INTED) (2025)</span><button class="item-info-btn" data-info-id="resume-info-inted" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">VALENCIA, SPAIN</p>
-                <p>Presented to an international audience after a year of exploratory research. Worked on a research project with professors and a student on artificial intelligence and note-taking.</p>
+                <ul>
+                    <li>Presented to an international audience of 30+ academics after a year of exploratory research.</li>
+                    <li>Worked on a research project with professors and a student on artificial intelligence and note-taking.</li>
+                </ul>
             </div>
             <div class="resume-item">
                 <h3><span class="item-title-text">Marist+AI Academic Group (2024-Present)</span><button class="item-info-btn" data-info-id="resume-info-marist-ai" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
-                <p>Collaborated with faculty to develop an AI framework at Marist. Created, edited, and commented on multiple pieces of documentation and framework material.</p>
+                <ul>
+                    <li>Collaborated with faculty to develop an AI framework at Marist with an internal and external presence.</li>
+                    <li>Created, edited, and commented on multiple pieces of documentation and framework material.</li>
+                </ul>
             </div>
             <div class="resume-item">
                 <h3><span class="item-title-text">Other Academic Conferences</span><button class="item-info-btn" data-info-id="resume-info-conferences" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
                 <ul>
-                    <li>ALOUD (2025): Created and presented a language-learning video game to K-12 teachers.</li>
+                    <li>ALOUD (2025): Created and presented a self-developed language-learning video game to K-12 teachers.</li>
                     <li>CURSCA (2025): Developed and presented a poster with academic research on artificial intelligence.</li>
+                     <li>Hudson Valley AI Summit (2025): Presented poster on AI research, helped facilitate an open discussion on AI.</li>
                 </ul>
             </div>
 
             <h2>Extracurriculars</h2>
-            <div class="resume-item">
-                <h3><span class="item-title-text">Marist Circle Co-Features Editor (2025)</span><button class="item-info-btn" data-info-id="resume-info-circle-editor" title="More info"><i class="fas fa-circle-info"></i></button></h3>
+             <div class="resume-item">
+                <h3><span class="item-title-text">Marist Circle (2023-Present)</span><button class="item-info-btn" data-info-id="resume-info-circle-editor" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
-                <p>Edited up to 3 articles per issue; authored 15+ pieces total. Pitched stories, coordinated team assignments, assisted cross-campus distribution.</p>
-            </div>
-            <div class="resume-item">
-                <h3><span class="item-title-text">Marist Circle Staff Writer (2023-2024)</span><button class="item-info-btn" data-info-id="resume-info-circle-writer" title="More info"><i class="fas fa-circle-info"></i></button></h3>
-                <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK</p>
-                <p>Writing above-average quantity of newspaper articles (as much as 2 an issue) with consistent attention to quality.</p>
+                 <ul>
+                    <li>Total authorship of 15+ articles with editing and writing experience.</li>
+                    <li>Co-Features Editor (2024-2025): Edited up to 3 articles per issue.</li>
+                    <li>Staff Writer (2023-2024): Pitched stories, coordinated team assignments, assisted cross-campus distribution.</li>
+                 </ul>
             </div>
             <div class="resume-item">
                 <h3><span class="item-title-text">Marist Games Society - Subcommittee Leader (2024-Present)</span><button class="item-info-btn" data-info-id="resume-info-games-society" title="More info"><i class="fas fa-circle-info"></i></button></h3>
                 <p class="resume-item-location-subtext">POUGHKEEPSIE, NEW YORK AND VIRTUAL</p>
-                <p>Coordinating and helping new students integrate into groups, attendance and coordination of own group.</p>
+                <p>Coordinating and helping new students integrate into gaming groups, leading and coordination of own group.</p>
             </div>
 
             <h2>Awards</h2>
             <ul>
-                <li>Dean's List, Marist University (2024, 2025, multiple times) <button class="item-info-btn" data-info-id="resume-info-deans-list" title="More info"><i class="fas fa-circle-info"></i></button></li>
+                <li>Dean's List, Marist University (2024, 2025; 4x) <button class="item-info-btn" data-info-id="resume-info-deans-list" title="More info"><i class="fas fa-circle-info"></i></button></li>
                 <li>Sigma Delta Pi, Marist University (2024) Spanish honors society <button class="item-info-btn" data-info-id="resume-info-sigma-delta-pi" title="More info"><i class="fas fa-circle-info"></i></button></li>
+                <li>New York State Seal of Biliteracy, Spanish (2023) <!-- Info Button Removed --></li>
                 <li>National Honors Society (2023) <button class="item-info-btn" data-info-id="resume-info-nhs" title="More info"><i class="fas fa-circle-info"></i></button></li>
             </ul>
 
             <h2>Other Skills</h2>
             <ul>
-                <li>Productivity: Google Suite, Microsoft Suite (advanced formatting).</li>
-                <li>Artificial Intelligence: Strong knowledge of prominent AI tools and effective, innovative application.</li>
-                <li>Video creation: Filming, editing, exporting.</li>
-                <li>Creative work: Graphic design (Photoshop, Canva), digital illustration.</li>
+                <li>Productivity: Google Suite, Microsoft Suite (advanced formatting), Notion, website building.</li>
+                <li>Generative Artificial Intelligence: Strong knowledge of prominent AI tools and innovative application.</li>
+                <li>Creative work: Graphic design (Photoshop, Canva) of infographics and longer informational documents, digital illustration, elaborate template and activity building, editing video.</li>
                 <li>Spanish: Conversational, written, and professional communication.</li>
-                <li>Template Building: Creating lessons and materials that are "turn-key" ready for educators.</li>
             </ul>
         </div>
     </div>
 
+    <!-- HIDDEN CONTENT FOR MAIN PAGE HIGHLIGHTS -->
+     <div class="hidden-content-source" id="content-smile-learn">
+        <h2>Smile and Learn Intern</h2>
+        <p>As a part-time intern for Smile and Learn, I learned more about language learning, levels of language aquisition, and the use of AI and technological tools to assist in that process across a variety of age groups in both Spanish and English.</p>
+        <div class="pills-data" data-pills="AI in Education,Resource Development,Student Support,AI"></div>
+    </div>
     <div class="hidden-content-source" id="content-instructional-tech-intern">
         <h2>Instructional Technology Intern</h2>
-        <p>As a full-time Instructional Technology Intern at Marist University (Poughkeepsie, NY, 2025 & ongoing), I create resources for faculty and students to understand artificial intelligence and its impact. </p>
+        <p>As a full-time Instructional Technology Intern at Marist University (ended in Aug 2025), I created resources for faculty and students to understand artificial intelligence and its impact.</p>
         <div class="pills-data" data-pills="AI in Education,Instructional Technology,Resource Development,Faculty Support,Student Support,Content Creation"></div>
     </div>
     <div class="hidden-content-source" id="content-ai-research-combo">
         <h2>AI Research (INTED & CURSCA)</h2>
-        <p>Presented original research on AI's role in education. For INTED 2025 (Valencia, Spain), I co-authored and presented a paper on AI and student note-taking, introducing the GAIN framework. For CURSCA 2025 (Marist), I developed and presented a poster detailing academic research on artificial intelligence applications. </p>
-        <p><strong>Stats:</strong> 10 page paper, presented ot room of 40+ people, 15 minute presentationw with questions</p>
+        <p>Presented original research on AI's role in education. For INTED 2025 (Valencia, Spain), I co-authored and presented a paper on AI and student note-taking, introducing the GAIN framework. For CURSCA 2025 (Marist), I developed and presented a poster detailing academic research on artificial intelligence applications. Stats: 10 page paper, presented ot room of 40+ people, 15 minute presentationw with questions</p>
         <div class="pills-data" data-pills="Research,AI,Academic Writing,Conference Presentation"></div>
     </div>
     <div class="hidden-content-source" id="content-marist-ai-group">
@@ -1301,51 +1571,61 @@
     </div>
     <div class="hidden-content-source" id="content-boces-ta">
         <h2>Teaching Assistant (Rockland BOCES)</h2>
-        <p>Provided classroom support as a substitute teaching assistant for neurodivergent students in Clarkstown, NY. Adapted instructional materials, facilitated learning activities, and assisted with classroom management in full-day settings (2025 & ongoing).</p>
-        <p><strong>Stats:</strong> Directly worked with 10+ educators and 30+ students across 3 schools</p>
+        <p>Provided classroom support as a substitute teaching assistant for neurodivergent students in Clarkstown, NY. Adapted instructional materials, facilitated learning activities, and assisted with classroom management in full-day settings (2025 & ongoing). Stats: Directly worked with 10+ educators and 30+ students across 3 schools</p>
         <div class="pills-data" data-pills="Teaching,Special Education,Adaptability,Classroom Support"></div>
     </div>
     <div class="hidden-content-source" id="content-freelance-tutoring">
         <h2>Freelance Tutoring</h2>
-        <p>Offered virtual private tutoring services to high school students in Spanish and various science subjects. Developed personalized learning plans that led to significant grade improvements.</p>
-        <p><strong>Stats:</strong> Increased student grades by as much as 30 percentile points</p>
+        <p>Offered virtual private tutoring services to high school students in Spanish and various science subjects. Developed personalized learning plans that led to significant grade improvements. Stats: Increased student grades by as much as 30 percentile points</p>
         <div class="pills-data" data-pills="Tutoring,Mentorship,Spanish,Personalized Learning"></div>
     </div>
     <div class="hidden-content-source" id="content-aloud-game">
         <h2>ALOUD Language Learning Game</h2>
-        <p>Developed and presented a functional prototype of a language-learning video game at the ALOUD academic conference (Poughkeepsie, NY, 2025). Aimed at K-12 teachers, the game demonstrated innovative ways to engage students in Spanish language acquisition.</p>
-        <p><strong>Stats:</strong> Presented to 10+ teachers individually, game with 4 languages</p>
+        <p>Developed and presented a functional prototype of a language-learning video game at the ALOUD academic conference (Poughkeepsie, NY, 2025). Aimed at K-12 teachers, the game demonstrated innovative ways to engage students in Spanish language acquisition. Stats: Presented to 10+ teachers individually, game with 4 languages</p>
         <div class="pills-data" data-pills="Game Development,Educational Technology,Spanish,Presentation,Conference Presentation"></div>
     </div>
     <div class="hidden-content-source" id="content-marist-circle"> <h2>The Marist Circle - Editorial & Writing</h2>
-        <p>I've been a Co-Features Editor (2025) and a Staff Writer (2023-2024) for Marist University's newspaper. Extensive experience in pitching, writing, interviewing, editing, and leadership within a journalistic environment. <a href="https://www.maristcircle.com/search?q=owen+whelan" target="_blank" rel="noopener noreferrer" class="inline-text-link">View my work here.</a> </p>
-        <p><strong>Stats:</strong> 15+ articles published, up to 2 articles self-written an issue, up to 3 articles edited an issue</p>
+        <p>I've been a Co-Features Editor (2025) and a Staff Writer (2023-2024) for Marist University's newspaper. Extensive experience in pitching, writing, interviewing, editing, and leadership within a journalistic environment. View my work here. Stats: 15+ articles published, up to 2 articles self-written an issue, up to 3 articles edited an issue</p>
         <div class="pills-data" data-pills="Writing,Editing,Leadership,Journalism,Communication,Teamwork"></div>
     </div>
     <div class="hidden-content-source" id="content-games-society">
         <h2>Games Society Leadership</h2>
-        <p>Acted as a Subcommittee Leader for the Marist Games Society (Poughkeepsie, NY & Virtual, 2024-Present), focusing on coordinating group activities, fostering an inclusive environment, and helping new members integrate.</p>
-        <p><strong>Stats:</strong> Managed an online community of 100+ members</p>
+        <p>Acted as a Subcommittee Leader for the Marist Games Society (Poughkeepsie, NY & Virtual, 2024-Present), focusing on coordinating group activities, fostering an inclusive environment, and helping new members integrate. Stats: Managed an online community of 100+ members</p>
         <div class="pills-data" data-pills="Leadership,Coordination,Team Building,Community Management,Event Planning"></div>
     </div>
 
-    <div class="hidden-info" id="resume-info-it-intern"><h4>Instructional Technology Intern Details</h4><p>This ongoing role involves researching emerging AI technologies relevant to education, creating accessible guides and tutorials for various AI tools, and assisting with workshops for faculty and students on AI literacy and application. Aims to promote responsible and effective AI use across the Marist University community.</p></div>
+    <!-- HIDDEN INFO FOR RESUME PAGE SIDEBAR -->
+    <div class="hidden-info" id="resume-info-uc3m"><h4>Universidad Carlos III de Madrid Details</h4><p>UC3M is a renowned public university in Getafe, Spain. It's known for its academic excellence; there, I've take on 3 classes exclusively taught in Spanish. This is also while living with a host family, commuting and learning the community on my own, and attending cultural events wherever possible.</p></div>
+    <div class="hidden-info" id="resume-info-it-intern"><h4>Instructional Technology Intern Details</h4><p>I researched emerging AI technologies relevant to education, creating accessible guides and tutorials for various AI tools and assisting with workshops for faculty and students on AI literacy and application. I promoted responsible and effective AI use across the Marist University community.</p></div>
     <div class="hidden-info" id="resume-info-boces-ta"><h4>Rockland BOCES TA Details</h4><p>Focused on creating an inclusive environment and adapting teaching methods to individual student needs. Gained valuable experience in special education practices, behavior management techniques, and collaborative teaching within a structured educational setting for neurodivergent learners.</p></div>
-    <div class="hidden-info" id="resume-info-tutoring"><h4>Freelance Tutoring Details</h4><p>Quickly synthesised information in Earth Science and Spanish (aligned to state standards) and broke it down in ways for students to understand. I used visual resources and sketches to explain the concepts to high-school level students. They saw notable grade improvements following intensive, focused review sessions.</p></div>
+    <div class="hidden-info" id="resume-info-tutoring"><h4>Freelance Tutoring Details</h4><p>Quickly synthesized information in Earth Science and Spanish (aligned to state standards) and broke it down in ways for students to understand. I used visual resources and sketches to explain the concepts to high-school level students. They saw notable grade improvements following intensive, focused review sessions.</p></div>
     <div class="hidden-info" id="resume-info-pools-cashier"><h4>Clarkstown Pools Cashier Details</h4><p>Managed high-volume cash transactions accurately, provided information about pool facilities and programs, and resolved customer inquiries efficiently during busy summer seasons. Developed strong interpersonal, communication, and problem-solving skills in a fast-paced, public-facing environment. Collaborated with a team of 10-15 staff members.</p></div>
     <div class="hidden-info" id="resume-info-marist-edu">
         <h4>Marist University Details</h4>
         <p>I am currently a junior at Marist University studying Adolescent Education in Spanish with a pathway in Technology & Society and completing requirements for the honors program. I am minoring in Applied Artificial Intelligence. I am expected to graduate with my Bachelor’s degree in 2027. As a part of Marist’s 4+1 program, I am expected to receive my Master’s degree in 2028. Consistently on Dean's List.</p>
-        </div>
+    </div>
     <div class="hidden-info" id="resume-info-inted"><h4>INTED Publication Details</h4><p>The research explored the efficacy of AI-powered note-taking tools versus traditional methods for college students, considering factors like retention, organization, and critical engagement with material. The presentation included a live demonstration of selected AI tools and a Q&A session with international educators and researchers.</p></div>
-    <div class="hidden-info" id="resume-info-marist-ai"><h4>Marist+AI Group Details</h4><p>Contributed to sections on AI in the humanities and arts, AI for accessibility, and pedagogical best practices for AI integration within the proposed institutional framework. Participated in workshops and discussions on responsible AI deployment, data privacy, and academic integrity in an AI-enhanced academic setting.</p></div>
+    <div class="hidden-info" id="resume-info-marist-ai"><h4>Marist+AI Group Details</h4><p>Contributed to sections on AI in the humanities and arts, AI for accessibility, and pedagogical best practices for AI integration within the proposed institutional framework. </p></div>
     <div class="hidden-info" id="resume-info-conferences"><h4>Other Academic Conferences Details</h4><p>At ALOUD, I created a language-learning video game and presented it to educators in the area. It's published on the internet (see the Extras page) and required me to develop a concept, prototype the game, and create assets. The CURSCA conference involved me and my research partner re-presenting our INTED work in a new format, answering questions and explaining our work throughout the conference.</p></div>
     <div class="hidden-info" id="resume-info-circle-editor"><h4>Marist Circle Editor Details</h4><p>As Co-Features Editor, responsibilities included managing a team of writers for the Features section, providing constructive feedback on drafts, ensuring adherence to journalistic standards and AP style, and contributing to editorial decisions for content and layout. Authored over 15 pieces on diverse campus topics, including investigative reports and student profiles.</p></div>
     <div class="hidden-info" id="resume-info-circle-writer"><h4>Marist Circle Writer Details</h4><p>Known for timely and well-researched articles covering campus news, student life, arts and culture, and local events. Often took on multiple assignments per issue, demonstrating versatility and commitment to quality journalism.</p></div>
-    <div class="hidden-info" id="resume-info-games-society"><h4>Games Society Leader Details</h4><p>Organized weekly meetings, special events (tournaments, guest speakers on game development), and managed online communication for a subcommittee focused on narrative-driven and educational games. Facilitated discussions on game design and industry trends.</p></div>
+    <div class="hidden-info" id="resume-info-games-society"><h4>Games Society Leader Details</h4><p>Online, I helped students at Marist get into groups to play tabletop games together through custom forms and careful planning of members. This involved moderating an online community (via Discord) and engaging Marist students with weekly poll questions, conversation, and more. I also ran my own group, which included preparing sessions and taking attendance.</p></div>
     <div class="hidden-info" id="resume-info-deans-list"><h4>Dean's List Significance</h4><p>Awarded to students achieving a high GPA (typically 3.6 or above on a 4.0 scale) for a semester, demonstrating consistent academic excellence across all coursework.</p></div>
     <div class="hidden-info" id="resume-info-sigma-delta-pi"><h4>Sigma Delta Pi Details</h4><p>Membership in the National Collegiate Hispanic Honor Society (La Sociedad Nacional Honoraria Hispánica) recognizes outstanding achievement in the study of Spanish language, literature, and culture at the university level.</p></div>
     <div class="hidden-info" id="resume-info-nhs"><h4>National Honor Society Details</h4><p>Membership based on the four pillars of scholarship, leadership, service, and character during high school, recognizing well-rounded student achievement.</p></div>
+
+    <!-- HIDDEN CONTENT FOR MY WORK PAGE CLIPBOARD -->
+    <div style="display:none;">
+        <div id="clipboard-project-inted"><h4>Research Paper... (INTED 2025)</h4><p>I worked closely with two professors and a fellow student to create a research paper that analyzed the AI landscape and how it shapes student note-taking. My presentation went over the tools that existed, but also mentioned how educators and students can evaluate and be aware of these tools. The details on its publishing are available here, including the abstract.</p></div>
+        <div id="clipboard-project-aloud"><h4>ALOUD Language Learning Game...</h4><p>I made a game titled Partybusters! (in Spanish, ¡Guardafiesta!) in which players manage a birthday party. They admit "partygoers" by reading a list of ever-more complicated rules. The game's focus is on language acquisition as a game for reviewing vocabulary and grammar concepts. It's infinitely expandable using AI. I demoed the game to teachers at Marist University's ALOUD conference in 2025. Play the game here.</p></div>
+        <div id="clipboard-project-marist-ai"><h4>Marist+AI Academic Working Group Details</h4><p>As a student representative in the Marist + AI working group, I've helped faculty and students learn more about AI technology as well as guide them to use it effectively, with an ultimate goal of achieving a community at Marist that integrates AI in a responsible, useful way. I've also collaborated with faculty to develop an AI framework at Marist and created, edited, and commented on multiple pieces of documentation and framework material. I'm still contributing my knowledge to Marist's AI progress while I'm in university.</p></div>
+        <div id="clipboard-extra-marist-circle"> <h4>Journalistic Skills & Marist Circle Contributions</h4> <p>This is the newspaper club at Marist University. You can view my work here. All of my articles are on topics that I found interesting, or just general happenings on campus. I pride myself in variety and quality writing. I published as much as two articles an issue while still keeping interesting topics at the center. As an editor, I took great care in not only polishing work of my fellow writers but mentoring others and ensuring long-term change and improvement.</p></div>
+        <div id="clipboard-extra-sigma-delta-pi"><h4>Sigma Delta Pi</h4><p>Inducted October 2024. This is the National Honors Society for Spanish on the college level. I also received it in high school. Being a member of ΣΔΠ shows a dedication to values that make up a good student as well as someone who is knowledgeable of Spanish and Spanish-speaking cultures.</p></div>
+        <div id="clipboard-extra-deans-list"><h4>Marist University Dean's List Details</h4><p>Currently on a perfect streak! I received the Dean’s List from Marist University in both the 2023-24 and 2024-25 years, representing my dedication to academics.</p></div>
+        <div id="clipboard-extra-seal-biliteracy"><h4>New York State Seal of Biliteracy (Spanish) Details</h4><p>Completed May 2022, awarded June 2023. Through Nanuet Senior High School, I completed the requirements for the New York State Seal of Biliteracy in 2022 and was awarded it upon my graduation in 2023. It demonstrates my proficiency in Spanish through speaking, listening, reading, and writing. My focus for the project was on technology and how it affects language and translation as a whole. When doing my project, my theme was on computer-assisted use of different languages with technologies like Google Lens and Google Translate.</p></div>
+        <div id="clipboard-extra-nhs"><h4>National Honor Society Details</h4><p>Inducted 2022. Encompassing my dedication to academics and service in high school, I became a member of the National Honors Society in 2022. You can learn about the National Honors Society from their website.</p></div>
+        <div id="clipboard-extra-mosaic"><h4>Marist Mosaic Poem Details</h4><p>I got published in Marist Univeristy's Mosaic magazine in 2025. My poem is featured here.</p></div>
+    </div>
 
 
     <div id="info-sidebar">
@@ -1353,12 +1633,11 @@
         <div id="sidebar-content"></div>
     </div>
 
-    <div id="clipboard-panel-container">
-        </div>
+    <div id="clipboard-panel-container"></div>
 
 
     <script>
-    // Encapsulated Highlights Module (New Logic)
+    // Encapsulated Highlights Module (Original Logic)
     const highlightsModule = (() => {
         // Configuration
         const SCROLL_AMOUNT = 220; // How much to scroll per arrow click (approx 2-3 items)
@@ -1567,8 +1846,7 @@
         const navButtons = {
             'about-page': document.getElementById('nav-about'),
             'skills-page': document.getElementById('nav-skills'),
-            'projects-page': document.getElementById('nav-projects'),
-            'extras-page': document.getElementById('nav-extras'),
+            'my-work-page': document.getElementById('nav-my-work'),
             'resume-web-page': document.getElementById('nav-resume-web'),
             'changelog-page': changelogButton,
             'kernels-page': document.getElementById('nav-kernels')
@@ -1586,7 +1864,6 @@
             }
             window.scrollTo(0, 0);
         }
-
 
         function showMainContent() {
             hideAllSubpages();
@@ -1624,17 +1901,17 @@
             const contentSource = document.getElementById(targetId);
             if (!contentSource || !clipboardPanelContainer) return;
             let panel = document.getElementById('dynamic-clipboard-panel');
-            if (!panel) {
-                panel = document.createElement('div');
-                panel.classList.add('clipboard-panel');
-                panel.id = 'dynamic-clipboard-panel';
-                clipboardPanelContainer.appendChild(panel);
-            }
+            if (panel) panel.remove(); // Remove existing panel to avoid duplicates
+            
+            panel = document.createElement('div');
+            panel.classList.add('clipboard-panel');
+            panel.id = 'dynamic-clipboard-panel';
+            clipboardPanelContainer.appendChild(panel);
+            
             panel.innerHTML = `
-                <div id="clipboard-content-area-dyn"></div>
+                <div id="clipboard-content-area-dyn">${contentSource.innerHTML}</div>
                 <button class="close-clipboard-btn" title="Close Clipboard">&times;</button>
             `;
-            document.getElementById('clipboard-content-area-dyn').innerHTML = contentSource.innerHTML;
             panel.querySelector('.close-clipboard-btn').addEventListener('click', closeClipboardPanel);
             setTimeout(() => { panel.classList.add('visible'); }, 10);
         }
@@ -1644,7 +1921,7 @@
             if (panel) {
                 panel.classList.remove('visible');
                 setTimeout(() => {
-                    if (!panel.classList.contains('visible')) {
+                    if (panel && !panel.classList.contains('visible')) {
                         panel.remove();
                     }
                 }, 500);
@@ -1695,7 +1972,7 @@
                 closeSidebar();
             }
             const activeClipboardPanel = document.querySelector('.clipboard-panel.visible');
-            if (activeClipboardPanel && !activeClipboardPanel.contains(event.target) && !galleryInfoBtn) {
+            if (activeClipboardPanel && !activeClipboardPanel.contains(event.target)) {
                  const isOpeningButton = event.target.closest('.gallery-page .item-info-btn[data-clipboard-target]');
                  if (!isOpeningButton) {
                     closeClipboardPanel();
@@ -1703,7 +1980,7 @@
             }
         });
 
-        if(lastUpdatedElement) lastUpdatedElement.textContent = "Last Updated: June 22, 2025";
+        if(lastUpdatedElement) lastUpdatedElement.textContent = "Last Updated: September 2025.";
         
         console.log("Hey! Thanks for checking out the console. I coded this with AI, but have HTML knowledge and graphic design know-how to get everything looking just right. Feel free to shoot me a message if you want to learn more about the process or have a project in mind. You can also poke around the source code and use some ideas from this site in your projects -- just credit where it makes sense! -Owen");
 
@@ -1711,5 +1988,169 @@
 
     });
     </script>
+    <script>
+    // Script for NEW Skills Page (from tester.html)
+    (function(){
+      const skillsPage = document.getElementById('skills-page');
+      if (!skillsPage) return; // Don't run if not on the right page
+
+      const list = skillsPage.querySelector('#soft-list');
+      const focusCard = skillsPage.querySelector('#focus-card');
+      const focusTitle = skillsPage.querySelector('#focus-title');
+      const focusText = skillsPage.querySelector('#focus-text');
+      if (!list || !focusCard || !focusTitle || !focusText) return;
+
+      let lockedEl = null;
+      let transitionTimeout = null;
+
+      function setFocusContent(title, description, isActive) {
+        clearTimeout(transitionTimeout);
+        focusCard.style.opacity = '0';
+        transitionTimeout = setTimeout(() => {
+            if (isActive) {
+                focusCard.classList.add('active');
+            } else {
+                focusCard.classList.remove('active');
+            }
+            
+            focusTitle.innerHTML = title ? `<strong>${title}</strong>` : '';
+            focusTitle.style.display = title ? 'block' : 'none';
+            focusText.textContent = description;
+            
+            focusCard.style.opacity = '1';
+        }, 100);
+      }
+
+      function showFocus(el) {
+        setFocusContent(el.dataset.title, el.dataset.desc, true);
+      }
+
+      function clearFocus() {
+        setFocusContent(null, 'Hover or tap a software from the list to preview details here.', false);
+      }
+
+      const allSoftItems = list.querySelectorAll('.soft-item');
+      allSoftItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            if (!lockedEl) {
+                showFocus(item);
+                item.classList.add('highlighted');
+            }
+        });
+
+        item.addEventListener('mouseleave', () => {
+            if (!lockedEl) {
+                clearFocus();
+                item.classList.remove('highlighted');
+            }
+        });
+
+        item.addEventListener('click', () => {
+            if (lockedEl === item) {
+                lockedEl = null;
+                clearFocus();
+                item.classList.remove('highlighted');
+            } else {
+                if (lockedEl) {
+                    lockedEl.classList.remove('highlighted');
+                }
+                lockedEl = item;
+                showFocus(item);
+                item.classList.add('highlighted');
+            }
+        });
+      });
+    })();
+    </script>
+    <script>
+    // Script for NEW My Work Page (from projectspagenew.html)
+    document.addEventListener('DOMContentLoaded', () => {
+        const myWorkPage = document.getElementById('my-work-page');
+        if (!myWorkPage) return; // Don't run if this page isn't visible
+
+        const allItems = [
+            { type: 'project', year: '2025', category: 'Research', icon: 'fas fa-file-alt', title: 'AI, Note-Taking', desc: 'Published and presented research analyzing the AI landscape and its impact on student note-taking, proposing the GAIN framework.', clipboardId: 'clipboard-project-inted' },
+            { type: 'project', year: '2025', category: 'Development', icon: 'fas fa-gamepad', title: 'ALOUD Game', desc: 'Created and presented an interactive language-learning video game to grade-school teachers at the ALOUD conference.', clipboardId: 'clipboard-project-aloud' },
+            { type: 'project', year: '2024', category: 'Leadership', icon: 'fas fa-cogs', title: 'Marist+AI Group', desc: 'Student representative in the Marist+AI working group, guiding AI integration and policy at the university.', clipboardId: 'clipboard-project-marist-ai' },
+            { type: 'project', year: '2025', category: 'Writing', icon: 'fas fa-newspaper', title: 'The Marist Circle', desc: 'Editor and writer for my school\'s newspaper. View my work here.', clipboardId: 'clipboard-extra-marist-circle' },
+            { type: 'extra', year: '2024', category: 'Honor Society', icon: 'fas fa-award', title: 'Sigma Delta Pi', desc: 'Inducted into the National Collegiate Hispanic Honor Society for dedication to Spanish language and culture.', clipboardId: 'clipboard-extra-sigma-delta-pi' },
+            { type: 'extra', year: '1', displayYear: '4x', category: 'Award', icon: 'fas fa-star', title: 'Dean\'s List', desc: 'Recognized for academic excellence, receiving Dean\'s List honors multiple times.', clipboardId: 'clipboard-extra-deans-list' },
+            { type: 'extra', year: '2023', category: 'Award', icon: 'fas fa-certificate', title: 'NYS Seal of Biliteracy', desc: 'Awarded for demonstrated proficiency in Spanish (speaking, listening, reading, writing).', clipboardId: 'clipboard-extra-seal-biliteracy' },
+            { type: 'extra', year: '2022', category: 'Honor Society', icon: 'fas fa-shield-alt', title: 'National Honor Society', desc: 'Inducted for dedication to academics and service in high school.', clipboardId: 'clipboard-extra-nhs' },
+            { type: 'extra', year: '2025', category: 'Publication', icon: 'fas fa-feather-alt', title: 'Marist Mosaic', desc: 'Poetry published in the Marist University literary arts journal.', clipboardId: 'clipboard-extra-mosaic' }
+        ];
+
+        const projectsGallery = myWorkPage.querySelector('#projects-gallery');
+        const extrasGallery = myWorkPage.querySelector('#extras-gallery');
+        const sortToggle = myWorkPage.querySelector('#sort-toggle');
+        const categoryContainer = myWorkPage.querySelector('#category-gallery-container');
+        const sortedContainer = myWorkPage.querySelector('#sorted-gallery-container');
+        // Note: clipboard panel is handled by the main script
+
+        if (!projectsGallery || !extrasGallery || !sortToggle || !categoryContainer || !sortedContainer) return;
+
+        function createGalleryItem(item) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'gallery-item';
+            itemDiv.dataset.year = item.year;
+            itemDiv.dataset.category = item.category;
+            itemDiv.dataset.type = item.type;
+
+            itemDiv.innerHTML = `
+                <span class="gallery-item-year">${item.displayYear || item.year}</span>
+                <div class="project-icon-container">
+                    <i class="${item.icon}"></i>
+                </div>
+                <h4>${item.title}</h4>
+                <p class="item-short-desc">${item.desc}</p>
+                <button class="item-info-btn" data-clipboard-target="${item.clipboardId}" title="More Info">
+                    <i class="fas fa-circle-info"></i>
+                </button>
+            `;
+            return itemDiv;
+        }
+
+        function renderItems(items, container) {
+            container.innerHTML = '';
+            items.forEach(item => {
+                container.appendChild(createGalleryItem(item));
+            });
+        }
+
+        function renderCategorized() {
+            const projects = allItems.filter(item => item.type === 'project').sort((a, b) => b.year.localeCompare(a.year));
+            const extras = allItems.filter(item => item.type === 'extra').sort((a, b) => b.year.localeCompare(a.year));
+            renderItems(projects, projectsGallery);
+            renderItems(extras, extrasGallery);
+        }
+        
+        function renderSortedByYear() {
+            const sortedItems = [...allItems].sort((a, b) => b.year.localeCompare(a.year));
+            const galleryDiv = document.createElement('div');
+            galleryDiv.className = 'gallery';
+            renderItems(sortedItems, galleryDiv);
+            
+            sortedContainer.innerHTML = ''; // Clear previous content
+            sortedContainer.appendChild(galleryDiv);
+        }
+
+        function handleSortToggle() {
+            if (sortToggle.checked) { // Sort by Year
+                categoryContainer.style.display = 'none';
+                renderSortedByYear();
+                sortedContainer.style.display = 'block';
+            } else { // Sort by Category
+                sortedContainer.style.display = 'none';
+                categoryContainer.style.display = 'block';
+            }
+        }
+
+        // Initial setup
+        renderCategorized();
+        sortToggle.addEventListener('change', handleSortToggle);
+        handleSortToggle(); // Run once to set initial state
+    });
+    </script>
 </body>
 </html>
+
